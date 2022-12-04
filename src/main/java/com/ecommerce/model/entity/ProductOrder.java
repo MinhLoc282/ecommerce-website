@@ -17,7 +17,7 @@ import static javax.persistence.GenerationType.IDENTITY;
         @NamedQuery(name = "ProductOrder.countByCustomer", query = "SELECT COUNT(po.orderId) FROM ProductOrder po WHERE po.customer.customerId = :customerId"),
         @NamedQuery(name = "ProductOrder.findByCustomer", query = "SELECT po FROM ProductOrder po WHERE po.customer.customerId = :customerId ORDER BY po.orderDate DESC"),
         @NamedQuery(name = "ProductOrder.findByIdAndCustomer", query = "SELECT po FROM ProductOrder po WHERE po.orderId = :orderId AND po.customer.customerId = :customerId")})
-public class ProductOrder implements java.io.Serializable {
+public class ProductOrder {
 
     private Integer orderId;
     private Customer customer;

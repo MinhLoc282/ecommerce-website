@@ -10,8 +10,9 @@ import javax.persistence.*;
 @Table(name = "order_detail", catalog = "ecommercedb")
 @NamedQueries({
         @NamedQuery(name = "OrderDetail.bestSelling", query = "SELECT od.product FROM OrderDetail od GROUP by od.product.productId ORDER BY SUM(od.quantity) DESC"),
+        @NamedQuery(name = "OrderDetail.bestSellingByCategory", query = "SELECT od.product FROM OrderDetail od JOIN Category c ON od.product.category.categoryId = c.categoryId AND c.categoryId = :categoryId GROUP by od.product.productId ORDER BY SUM(od.quantity) DESC"),
         @NamedQuery(name = "OrderDetail.countByProduct", query = "SELECT COUNT(*) FROM OrderDetail od WHERE od.product.productId = :productId")})
-public class OrderDetail implements java.io.Serializable {
+public class OrderDetail {
 
     private OrderDetailId id = new OrderDetailId();
     private Product product;

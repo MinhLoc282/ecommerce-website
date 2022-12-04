@@ -18,7 +18,7 @@ import static javax.persistence.GenerationType.IDENTITY;
         @NamedQuery(name = "Customer.findByEmail", query = "SELECT c FROM Customer c WHERE c.email = :email"),
         @NamedQuery(name = "Customer.countAll", query = "SELECT COUNT(c.email) FROM Customer c"),
         @NamedQuery(name = "Customer.findByEmailAndPassword", query = "SELECT c FROM Customer c WHERE c.email = :email AND c.password = :password")})
-public class Customer implements java.io.Serializable {
+public class Customer {
 
     private Integer customerId;
     private String email;

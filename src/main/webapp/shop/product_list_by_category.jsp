@@ -31,7 +31,7 @@
                 </div>
             </c:forEach>
         </div>
-        
+
         <div class="col-md-8 col-lg-9">
             <section class="products">
                 <div class="container">
@@ -52,6 +52,9 @@
                                         Ascending</a>
                                     <a class="dropdown-item"
                                        href="view_category?id=${category.categoryId}&sort=${'newest'}">Newest</a>
+                                    <a class="dropdown-item"
+                                       href="view_category?id=${category.categoryId}&sort=${'best_selling'}">Best
+                                        Selling</a>
                                 </div>
                             </div>
 

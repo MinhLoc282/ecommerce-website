@@ -85,5 +85,5 @@ class ReviewDAOTest {
 
         Assertions.assertTrue(totalReviews > 0);
     }
-    
+
 }

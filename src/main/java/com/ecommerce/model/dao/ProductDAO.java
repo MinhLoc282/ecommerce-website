@@ -70,6 +70,10 @@ public class ProductDAO extends JpaDAO<Product> implements GenericDAO<Product> {
         return super.findWithNamedQuery("OrderDetail.bestSelling", 0, 4);
     }
 
+    public List<Product> listBestSellingProducts(int categoryId) {
+        return super.findWithNamedQuery("OrderDetail.bestSellingByCategory", "categoryId", categoryId);
+    }
+
     public List<Product> listMostFavoredProducts() {
         List<Product> mostFavoredProducts = new ArrayList<>();
         List<Object[]> result = super.findWithNamedQueryObjects("Review.mostFavoredProducts", 0, 4);

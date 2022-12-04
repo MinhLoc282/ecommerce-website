@@ -188,5 +188,5 @@ class ProductDAOTest {
 
         Assertions.assertEquals(2, numberOfProducts);
     }
-    
+
 }

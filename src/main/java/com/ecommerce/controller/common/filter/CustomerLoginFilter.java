@@ -37,7 +37,7 @@ public class CustomerLoginFilter extends HttpFilter implements Filter {
         boolean loggedIn = session != null && session.getAttribute("loggedCustomer") != null;
 
         String requestURL = httpRequest.getRequestURL().toString();
-        
+
         // pass the request along the filter chain
         if (!loggedIn && isLoginRequired(requestURL)) {
             String queryString = httpRequest.getQueryString();

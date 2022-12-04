@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.ecommerce.model.dao;
 
@@ -13,108 +13,108 @@ import java.util.List;
 
 class CustomerDAOTest {
 
-	private static CustomerDAO customerDAO;
+    private static CustomerDAO customerDAO;
 
-	@BeforeAll
-	static void setUpBeforeClass() {
-		customerDAO = new CustomerDAO();
-	}
+    @BeforeAll
+    static void setUpBeforeClass() {
+        customerDAO = new CustomerDAO();
+    }
 
-	@AfterAll
-	static void tearDownAfterClass() {
-		customerDAO.close();
-	}
+    @AfterAll
+    static void tearDownAfterClass() {
+        customerDAO.close();
+    }
 
-	@Test
-	final void testCreateCustomer() {
-		Customer customer = new Customer();
-		customer.setEmail("peter.drucker@gmail.com");
-		customer.setFirstName("Peter");
-		customer.setLastName("Trucker");
-		customer.setCity("New York");
-		customer.setState("New York");
-		customer.setCountry("United States");
-		customer.setAddressLine1("100 North Avenue");
-		customer.setAddressLine2("Clifton Park");
-		customer.setPassword("secret");
-		customer.setPhone("18001900");
-		customer.setZipCode("100000");
-		Customer savedCustomer = customerDAO.create(customer);
+    @Test
+    final void testCreateCustomer() {
+        Customer customer = new Customer();
+        customer.setEmail("peter.drucker@gmail.com");
+        customer.setFirstName("Peter");
+        customer.setLastName("Trucker");
+        customer.setCity("New York");
+        customer.setState("New York");
+        customer.setCountry("United States");
+        customer.setAddressLine1("100 North Avenue");
+        customer.setAddressLine2("Clifton Park");
+        customer.setPassword("secret");
+        customer.setPhone("18001900");
+        customer.setZipCode("100000");
+        Customer savedCustomer = customerDAO.create(customer);
 
-		Assertions.assertTrue(savedCustomer.getCustomerId() > 0);
-	}
+        Assertions.assertTrue(savedCustomer.getCustomerId() > 0);
+    }
 
-	@Test
-	final void testUpdateCustomer() {
-		Customer customer = customerDAO.get(1);
-		String firstName = "Janie";
-		customer.setFirstName(firstName);
-		Customer updatedCustomer = customerDAO.update(customer);
+    @Test
+    final void testUpdateCustomer() {
+        Customer customer = customerDAO.get(1);
+        String firstName = "Janie";
+        customer.setFirstName(firstName);
+        Customer updatedCustomer = customerDAO.update(customer);
 
-		Assertions.assertEquals(updatedCustomer.getFirstName(), firstName);
-	}
+        Assertions.assertEquals(updatedCustomer.getFirstName(), firstName);
+    }
 
-	@Test
-	final void testGet() {
-		Integer customerId = 1;
-		Customer customer = customerDAO.get(customerId);
+    @Test
+    final void testGet() {
+        Integer customerId = 1;
+        Customer customer = customerDAO.get(customerId);
 
-		Assertions.assertNotNull(customer);
-	}
+        Assertions.assertNotNull(customer);
+    }
 
-	@Test
-	final void testDeleteCustomer() {
-		Integer customerId = 1;
-		customerDAO.delete(customerId);
-		Customer customer = customerDAO.get(1);
+    @Test
+    final void testDeleteCustomer() {
+        Integer customerId = 1;
+        customerDAO.delete(customerId);
+        Customer customer = customerDAO.get(1);
 
-		Assertions.assertNull(customer);
-	}
+        Assertions.assertNull(customer);
+    }
 
-	@Test
-	final void testListAll() {
-		List<Customer> listCustomers = customerDAO.listAll();
-		for (Customer customer : listCustomers) {
-			System.out.println(customer.getFirstName());
-		}
+    @Test
+    final void testListAll() {
+        List<Customer> listCustomers = customerDAO.listAll();
+        for (Customer customer : listCustomers) {
+            System.out.println(customer.getFirstName());
+        }
 
-		Assertions.assertFalse(listCustomers.isEmpty());
-	}
+        Assertions.assertFalse(listCustomers.isEmpty());
+    }
 
-	@Test
-	final void testCount() {
-		long totalCustomers = customerDAO.count();
+    @Test
+    final void testCount() {
+        long totalCustomers = customerDAO.count();
 
-		Assertions.assertEquals(1, totalCustomers);
-	}
+        Assertions.assertEquals(1, totalCustomers);
+    }
 
-	@Test
-	final void testFindByEmail() {
-		String email = "customer@gmail.com";
-		Customer customer = customerDAO.findByEmail(email);
+    @Test
+    final void testFindByEmail() {
+        String email = "customer@gmail.com";
+        Customer customer = customerDAO.findByEmail(email);
 
-		Assertions.assertNotNull(customer);
-	}
+        Assertions.assertNotNull(customer);
+    }
 
-	/**
-	 * Test method for {@link CustomerDAO#findByEmailAndPassword}.
-	 */
-	@Test
-	final void testFindByEmailAndPasswordSuccess() {
-		String email = "customer@gmail.com";
-		String password = "customer";
-		Customer customer = customerDAO.findByEmailAndPassword(email, password);
+    /**
+     * Test method for {@link CustomerDAO#findByEmailAndPassword}.
+     */
+    @Test
+    final void testFindByEmailAndPasswordSuccess() {
+        String email = "customer@gmail.com";
+        String password = "customer";
+        Customer customer = customerDAO.findByEmailAndPassword(email, password);
 
-		Assertions.assertNotNull(customer);
-	}
+        Assertions.assertNotNull(customer);
+    }
 
-	@Test
-	final void testFindByEmailAndPasswordFail() {
-		String email = "admin@gmail.com";
-		String password = "admin";
-		Customer customer = customerDAO.findByEmailAndPassword(email, password);
+    @Test
+    final void testFindByEmailAndPasswordFail() {
+        String email = "admin@gmail.com";
+        String password = "admin";
+        Customer customer = customerDAO.findByEmailAndPassword(email, password);
 
-		Assertions.assertNull(customer);
-	}
+        Assertions.assertNull(customer);
+    }
 
 }

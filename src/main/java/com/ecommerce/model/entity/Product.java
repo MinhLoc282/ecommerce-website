@@ -21,7 +21,7 @@ import static javax.persistence.GenerationType.IDENTITY;
         @NamedQuery(name = "Product.sortByPriceDesc", query = "SELECT p FROM Product p JOIN Category c ON p.category.categoryId = c.categoryId AND c.categoryId = :categoryId ORDER BY p.price DESC"),
         @NamedQuery(name = "Product.sortByPriceAsc", query = "SELECT p FROM Product p JOIN Category c ON p.category.categoryId = c.categoryId AND c.categoryId = :categoryId ORDER BY p.price"),
         @NamedQuery(name = "Product.sortByNewest", query = "SELECT p FROM Product p JOIN Category c ON p.category.categoryId = c.categoryId AND c.categoryId = :categoryId ORDER BY p.publishDate DESC")})
-public class Product implements java.io.Serializable {
+public class Product {
 
     private Integer productId;
     private Category category;

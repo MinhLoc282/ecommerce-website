@@ -191,10 +191,11 @@ public class ProductService {
     public void listProductByCategory() throws ServletException, IOException {
         int categoryId = Integer.parseInt(request.getParameter("id"));
         Category category = categoryDAO.get(categoryId);
+        List<Product> listProducts;
+
         String pageId = request.getParameter("page");
         String sort = request.getParameter("sort");
-        int numBegin;
-        int numEnd;
+
 
         if (pageId == null) {
             pageId = "1";
@@ -206,8 +207,6 @@ public class ProductService {
             return;
         }
 
-        List<Product> listProducts;
-
         if (Objects.equals(sort, "price_desc")) {
             listProducts = productDAO.sortByPriceDesc(categoryId);
         }
@@ -216,6 +215,9 @@ public class ProductService {
         }
         if (Objects.equals(sort, "newest")) {
             listProducts = productDAO.sortByNewest(categoryId);
+        }
+        if (Objects.equals(sort, "best_selling")) {
+            listProducts = productDAO.listBestSellingProducts(categoryId);
         } else {
             listProducts = productDAO.listByCategory(categoryId);
         }
@@ -231,8 +233,8 @@ public class ProductService {
             numberOfPages = numberOfPages / numberOfProducts;
         }
 
-        numEnd = Integer.parseInt(pageId) * numberOfProducts - 1;
-        numBegin = numEnd - numberOfProducts + 1;
+        int numEnd = Integer.parseInt(pageId) * numberOfProducts - 1;
+        int numBegin = numEnd - numberOfProducts + 1;
 
         request.setAttribute("listProducts", listProducts);
         request.setAttribute("listCategories", listCategories);
