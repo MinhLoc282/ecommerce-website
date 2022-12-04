@@ -43,20 +43,20 @@ public class UserDAO extends JpaDAO<User> implements GenericDAO<User> {
 
     public User findByEmail(String email) {
         List<User> listUser = super.findWithNamedQuery("User.findByEmail", "email", email);
+        
         if (listUser != null && listUser.size() == 1) {
             return listUser.get(0);
         }
-
         return null;
     }
 
-    public boolean checkEmailAndPassword(String email, String password) {
+    public boolean findByEmailAndPassword(String email, String password) {
         Map<String, Object> parameters = new HashMap<>();
         String encryptedPassword = HashUtility.generateMD5(password);
         parameters.put("email", email);
         parameters.put("password", encryptedPassword);
 
-        List<User> listUsers = super.findWithNamedQuery("User.checkEmailAndPassword", parameters);
+        List<User> listUsers = super.findWithNamedQuery("User.findByEmailAndPassword", parameters);
 
         return listUsers.size() == 1;
     }

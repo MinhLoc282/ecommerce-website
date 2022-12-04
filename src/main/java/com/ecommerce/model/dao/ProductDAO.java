@@ -46,7 +46,6 @@ public class ProductDAO extends JpaDAO<Product> implements GenericDAO<Product> {
         if (!result.isEmpty()) {
             return result.get(0);
         }
-
         return null;
     }
 
@@ -56,6 +55,10 @@ public class ProductDAO extends JpaDAO<Product> implements GenericDAO<Product> {
 
     public List<Product> listNewProducts() {
         return super.findWithNamedQuery("Product.listNewProducts", 0, 4);
+    }
+
+    public List<Product> lisNewProducts(int categoryId) {
+        return super.findWithNamedQuery("Product.listNewProductsByCategory", "categoryId", categoryId);
     }
 
     public List<Product> search(String keyword) {
@@ -84,7 +87,19 @@ public class ProductDAO extends JpaDAO<Product> implements GenericDAO<Product> {
                 mostFavoredProducts.add(product);
             }
         }
+        return mostFavoredProducts;
+    }
 
+    public List<Product> listMostFavoredProducts(int categoryId) {
+        List<Product> mostFavoredProducts = new ArrayList<>();
+        List<Object[]> result = super.findWithNamedQueryObjects("Review.mostFavoredProductsByCategory", "categoryId", categoryId);
+
+        if (!result.isEmpty()) {
+            for (Object[] elements : result) {
+                Product product = (Product) elements[0];
+                mostFavoredProducts.add(product);
+            }
+        }
         return mostFavoredProducts;
     }
 
@@ -94,10 +109,6 @@ public class ProductDAO extends JpaDAO<Product> implements GenericDAO<Product> {
 
     public List<Product> sortByPriceAsc(int categoryId) {
         return super.findWithNamedQuery("Product.sortByPriceAsc", "categoryId", categoryId);
-    }
-
-    public List<Product> sortByNewest(int categoryId) {
-        return super.findWithNamedQuery("Product.sortByNewest", "categoryId", categoryId);
     }
 
 }

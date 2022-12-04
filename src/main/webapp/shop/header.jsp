@@ -114,7 +114,7 @@
                             <div class="flexbox">
                                 <div class="search">
                                     <div>
-                                        <input type="text" name="search" placeholder="Search . . .">
+                                        <input type="text" name="keyword" placeholder="Search . . .">
                                     </div>
                                 </div>
                             </div>

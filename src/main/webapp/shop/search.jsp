@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <c:forEach items="${keyword}" var="product">
+                        <c:forEach items="${result}" var="product">
                             <div class="col-md-6 col-lg-4 col-product">
                                 <figure>
                                     <img class="rounded-corners img-fluid"

@@ -87,7 +87,7 @@ public class UserService {
         User userById = userDAO.get(userId);
         User userByEmail = userDAO.findByEmail(email);
 
-        boolean checkResult = userDAO.checkEmailAndPassword(email, checkPassword);
+        boolean checkResult = userDAO.findByEmailAndPassword(email, checkPassword);
 
         if (userByEmail != null && !Objects.equals(userByEmail.getUserId(), userById.getUserId())) {
             messageForAdmin(String.format("Could not update user. User with email %s already exists.", email),
@@ -134,7 +134,7 @@ public class UserService {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        boolean loginResult = userDAO.checkEmailAndPassword(email, password);
+        boolean loginResult = userDAO.findByEmailAndPassword(email, password);
 
         if (loginResult) {
             request.getSession().setAttribute("userEmail", email);

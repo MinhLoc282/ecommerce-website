@@ -6,7 +6,6 @@ package com.ecommerce.model.dao;
 import com.ecommerce.model.entity.Category;
 import com.ecommerce.model.entity.Product;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -18,6 +17,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class ProductDAOTest {
     private static ProductDAO productDAO;
@@ -55,7 +56,7 @@ class ProductDAOTest {
 
         Product createdProduct = productDAO.create(newProduct);
 
-        Assertions.assertTrue(createdProduct.getProductId() > 0);
+        assertTrue(createdProduct.getProductId() > 0);
     }
 
     @Test
@@ -82,28 +83,28 @@ class ProductDAOTest {
 
         Product updatedProduct = productDAO.update(existProduct);
 
-        Assertions.assertEquals(updatedProduct.getTitle(), "");
+        assertEquals(updatedProduct.getTitle(), "");
     }
 
     @Test
     void testGetProductSuccess() {
         Product product = productDAO.get(2);
 
-        Assertions.assertNotNull(product);
+        assertNotNull(product);
     }
 
     @Test
     void testGetProductFail() {
         Product product = productDAO.get(99);
 
-        Assertions.assertNull(product);
+        assertNull(product);
     }
 
     @Test
     void testDeleteProductSuccess() {
         productDAO.delete(1);
 
-        Assertions.assertTrue(true);
+        assertTrue(true);
     }
 
     @Test
@@ -119,35 +120,35 @@ class ProductDAOTest {
             System.out.println(product.getTitle() + " - " + product.getTitle());
         }
 
-        Assertions.assertFalse(listProduct.isEmpty());
+        assertFalse(listProduct.isEmpty());
     }
 
     @Test
     void testCount() {
         long totalProduct = productDAO.count();
 
-        Assertions.assertEquals(2, totalProduct);
+        assertEquals(2, totalProduct);
     }
 
     @Test
     void testFindByTitleExist() {
         Product product = productDAO.findByTitle("Bi-Swing Jacket");
 
-        Assertions.assertNotNull(product);
+        assertNotNull(product);
     }
 
     @Test
     void testFindByTitleNotExist() {
         Product product = productDAO.findByTitle("Hybrid Hooded Pullover");
 
-        Assertions.assertNull(product);
+        assertNull(product);
     }
 
     @Test
     public void testListByCategory() {
         List<Product> listProduct = productDAO.listByCategory(1);
 
-        Assertions.assertTrue(listProduct.size() > 0);
+        assertTrue(listProduct.size() > 0);
     }
 
     @Test
@@ -155,7 +156,7 @@ class ProductDAOTest {
         List<Product> listProduct = productDAO.listNewProducts();
         listProduct.forEach(p -> System.out.println(p.getTitle() + " - " + p.getPublishDate()));
 
-        Assertions.assertEquals(4, listProduct.size());
+        assertEquals(4, listProduct.size());
     }
 
     @Test
@@ -163,7 +164,7 @@ class ProductDAOTest {
         List<Product> listProduct = productDAO.search("Java");
         listProduct.forEach(p -> System.out.println(p.getTitle()));
 
-        Assertions.assertEquals(7, listProduct.size());
+        assertEquals(7, listProduct.size());
     }
 
     @Test
@@ -171,7 +172,7 @@ class ProductDAOTest {
         List<Product> listProduct = productDAO.search("Kathy");
         listProduct.forEach(p -> System.out.println(p.getTitle()));
 
-        Assertions.assertEquals(2, listProduct.size());
+        assertEquals(2, listProduct.size());
     }
 
     @Test
@@ -179,14 +180,36 @@ class ProductDAOTest {
         List<Product> listProduct = productDAO.search("The Chino Jacket");
         listProduct.forEach(p -> System.out.println(p.getTitle()));
 
-        Assertions.assertEquals(1, listProduct.size());
+        assertEquals(1, listProduct.size());
     }
 
     @Test
     public void testCountByCategory() {
         long numberOfProducts = productDAO.countByCategory(1);
 
-        Assertions.assertEquals(2, numberOfProducts);
+        assertEquals(2, numberOfProducts);
     }
 
+    @Test
+    public void testListBestSellingProducts() {
+        List<Product> topBestSellingProducts = productDAO.listBestSellingProducts();
+
+        for (Product product : topBestSellingProducts) {
+            System.out.println(product.getTitle());
+        }
+
+        assertTrue(topBestSellingProducts.size() > 0);
+    }
+
+    @Test
+    public void testListMostFavoredBooks() {
+        List<Product> topFavoredProducts = productDAO.listMostFavoredProducts();
+
+        for (Product product : topFavoredProducts) {
+            System.out.println(product.getTitle());
+        }
+
+        assertTrue(topFavoredProducts.size() > 0);
+    }
 }
+

@@ -40,12 +40,11 @@ public class CategoryDAO extends JpaDAO<Category> implements GenericDAO<Category
     }
 
     public Category findByName(String categoryName) {
-        List<Category> result = super.findWithNamedQuery("Category.findByName", "name", categoryName);
+        List<Category> result = super.findWithNamedQuery("Category.findByName", "categoryName", categoryName);
 
         if (result != null && result.size() > 0) {
             return result.get(0);
         }
-
         return null;
     }
 }

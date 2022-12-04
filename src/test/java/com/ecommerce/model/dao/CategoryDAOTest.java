@@ -1,15 +1,13 @@
-/**
- *
- */
 package com.ecommerce.model.dao;
 
 import com.ecommerce.model.entity.Category;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class CategoryDAOTest {
 
@@ -32,7 +30,7 @@ class CategoryDAOTest {
 
         Category newCategory = categoryDAO.create(category);
 
-        Assertions.assertTrue(newCategory != null && newCategory.getCategoryId() > 0);
+        assertTrue(newCategory != null && newCategory.getCategoryId() > 0);
     }
 
     @Test
@@ -42,7 +40,7 @@ class CategoryDAOTest {
 
         Category category = categoryDAO.update(cat);
 
-        Assertions.assertEquals(cat.getName(), category.getName());
+        assertEquals(cat.getName(), category.getName());
     }
 
     @Test
@@ -50,7 +48,7 @@ class CategoryDAOTest {
         Integer categoryId = 1;
         Category category = categoryDAO.get(categoryId);
 
-        Assertions.assertNotNull(category);
+        assertNotNull(category);
     }
 
     @Test
@@ -60,7 +58,7 @@ class CategoryDAOTest {
 
         Category category = categoryDAO.get(categoryId);
 
-        Assertions.assertNotNull(category);
+        assertNotNull(category);
     }
 
     @Test
@@ -69,28 +67,28 @@ class CategoryDAOTest {
 
         listCategories.forEach(c -> System.out.println(c.getName()));
 
-        Assertions.assertTrue(listCategories.size() > 0);
+        assertTrue(listCategories.size() > 0);
     }
 
     @Test
     void testCount() {
         long totalCategories = categoryDAO.count();
 
-        Assertions.assertEquals(1, totalCategories);
+        assertEquals(1, totalCategories);
     }
 
     @Test
     public void testFindByName() {
         Category category = categoryDAO.findByName("Tops");
 
-        Assertions.assertNotNull(category);
+        assertNotNull(category);
     }
 
     @Test
     public void testFindByNameNotFound() {
         Category category = categoryDAO.findByName("Dresses");
 
-        Assertions.assertNull(category);
+        assertNull(category);
     }
 
 }

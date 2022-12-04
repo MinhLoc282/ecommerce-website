@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.ecommerce.model.dao;
 
 import com.ecommerce.model.entity.Customer;
@@ -8,7 +5,6 @@ import com.ecommerce.model.entity.OrderDetail;
 import com.ecommerce.model.entity.Product;
 import com.ecommerce.model.entity.ProductOrder;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -16,6 +12,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class OrderDAOTest {
 
@@ -68,7 +66,7 @@ class OrderDAOTest {
 
         orderDAO.create(order);
 
-        Assertions.assertTrue(order.getOrderId() > 0);
+        assertTrue(order.getOrderId() > 0);
     }
 
     @Test
@@ -113,7 +111,7 @@ class OrderDAOTest {
 
         orderDAO.create(order);
 
-        Assertions.assertTrue(order.getOrderId() > 0 && order.getOrderDetails().size() == 2);
+        assertTrue(order.getOrderId() > 0 && order.getOrderDetails().size() == 2);
     }
 
     @Test
@@ -126,7 +124,7 @@ class OrderDAOTest {
 
         ProductOrder updatedOrder = orderDAO.get(orderId);
 
-        Assertions.assertEquals(order.getRecipientAddressLine1(), updatedOrder.getRecipientAddressLine1());
+        assertEquals(order.getRecipientAddressLine1(), updatedOrder.getRecipientAddressLine1());
     }
 
     @Test
@@ -163,8 +161,8 @@ class OrderDAOTest {
             }
         }
 
-        Assertions.assertEquals(expectedQuantity, actualQuantity);
-        Assertions.assertEquals(expectedSubtotal, actualSubtotal, 0.0f);
+        assertEquals(expectedQuantity, actualQuantity);
+        assertEquals(expectedSubtotal, actualSubtotal, 0.0f);
     }
 
     @Test
@@ -187,7 +185,7 @@ class OrderDAOTest {
         System.out.println(order.getTotal());
         System.out.println(order.getPaymentMethod());
 
-        Assertions.assertEquals(1, order.getOrderDetails().size());
+        assertEquals(1, order.getOrderDetails().size());
     }
 
     @Test
@@ -196,7 +194,7 @@ class OrderDAOTest {
         orderDAO.delete(orderId);
         ProductOrder order = orderDAO.get(orderId);
 
-        Assertions.assertNull(order);
+        assertNull(order);
     }
 
     @Test
@@ -213,14 +211,14 @@ class OrderDAOTest {
             }
         }
 
-        Assertions.assertTrue(listOrder.size() > 0);
+        assertTrue(listOrder.size() > 0);
     }
 
     @Test
     final void testCount() {
         long totalOrders = orderDAO.count();
 
-        Assertions.assertEquals(1, totalOrders);
+        assertEquals(1, totalOrders);
     }
 
     @Test
@@ -228,7 +226,7 @@ class OrderDAOTest {
         Integer customerId = 1;
         List<ProductOrder> listOrder = orderDAO.listByCustomer(customerId);
 
-        Assertions.assertTrue(listOrder.size() > 0);
+        assertTrue(listOrder.size() > 0);
     }
 
     @Test
@@ -236,7 +234,7 @@ class OrderDAOTest {
         Integer customerId = 99;
         List<ProductOrder> listOrder = orderDAO.listByCustomer(customerId);
 
-        Assertions.assertTrue(listOrder.isEmpty());
+        assertTrue(listOrder.isEmpty());
     }
 
     @Test
@@ -245,7 +243,7 @@ class OrderDAOTest {
         Integer customerId = 99;
         ProductOrder order = orderDAO.get(orderId, customerId);
 
-        Assertions.assertNull(order);
+        assertNull(order);
     }
 
     @Test
@@ -254,22 +252,46 @@ class OrderDAOTest {
         Integer customerId = 1;
         ProductOrder order = orderDAO.get(orderId, customerId);
 
-        Assertions.assertNotNull(order);
+        assertNotNull(order);
     }
 
     @Test
     final void testListMostRecentSales() {
-        Assertions.fail("Not yet implemented");
+        List<ProductOrder> recentOrders = orderDAO.listMostRecentSales();
+
+        assertTrue(recentOrders.size() > 0);
     }
 
     @Test
-    final void testCountOrderDetailByProduct() {
-        Assertions.fail("Not yet implemented");
+    final void testCountOrderDetailByProductNotFound() {
+        int productId = 100;
+        long orderCount = orderDAO.countOrderDetailByProduct(productId);
+
+        assertEquals(0, orderCount);
     }
 
     @Test
-    final void testCountByCustomer() {
-        Assertions.fail("Not yet implemented");
+    final void testCountOrderDetailByProductFound() {
+        int productId = 1;
+        long orderCount = orderDAO.countOrderDetailByProduct(productId);
+
+        assertEquals(2, orderCount);
+    }
+
+    @Test
+    public void testCountByCustomerNotFound() {
+        int customerId = 100;
+        long orderCount = orderDAO.countByCustomer(customerId);
+
+        assertEquals(0, orderCount);
+    }
+
+    @Test
+    public void testCountByCustomerFound() {
+        int customerId = 1;
+        long orderCount = orderDAO.countByCustomer(customerId);
+
+        assertEquals(4, orderCount);
     }
 
 }

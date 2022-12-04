@@ -4,10 +4,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    
+
     <%@ include file="common.jsp" %>
 
-    <link rel="stylesheet" href="shop/css/style.css">
     <link rel="stylesheet" href="shop/css/jquery.rateyo.min.css">
 
     <script type="text/javascript" src="shop/js/jquery-3.3.1.min.js"></script>

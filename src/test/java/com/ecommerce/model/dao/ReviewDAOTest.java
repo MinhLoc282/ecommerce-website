@@ -4,24 +4,25 @@ import com.ecommerce.model.entity.Customer;
 import com.ecommerce.model.entity.Product;
 import com.ecommerce.model.entity.Review;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 class ReviewDAOTest {
 
-    private static ReviewDAO reviewDao;
+    private static ReviewDAO reviewDAO;
 
     @BeforeAll
     static void setUpBeforeClass() {
-        reviewDao = new ReviewDAO();
+        reviewDAO = new ReviewDAO();
     }
 
     @AfterAll
     static void tearDownAfterClass() {
-        reviewDao.close();
+        reviewDAO.close();
     }
 
     @Test
@@ -40,50 +41,92 @@ class ReviewDAOTest {
         review.setRating(5);
         review.setComment("A comprehensive product for best outfit");
 
-        Review savedReview = reviewDao.create(review);
+        Review savedReview = reviewDAO.create(review);
 
-        Assertions.assertTrue(savedReview.getReviewId() > 0);
+        assertTrue(savedReview.getReviewId() > 0);
     }
 
     @Test
     final void testGet() {
-        Review review = reviewDao.get(1);
+        Review review = reviewDAO.get(1);
 
-        Assertions.assertNotNull(review);
+        assertNotNull(review);
     }
 
     @Test
     final void testUpdateReview() {
-        Review review = reviewDao.get(1);
+        Review review = reviewDAO.get(1);
         review.setHeadline("Excellent product");
-        Review updatedReview = reviewDao.update(review);
+        Review updatedReview = reviewDAO.update(review);
 
-        Assertions.assertEquals(review.getHeadline(), updatedReview.getHeadline());
+        assertEquals(review.getHeadline(), updatedReview.getHeadline());
     }
 
     @Test
     final void testDeleteReview() {
-        reviewDao.delete(2);
-        Review review = reviewDao.get(2);
+        reviewDAO.delete(2);
+        Review review = reviewDAO.get(2);
 
-        Assertions.assertNull(review);
+        assertNull(review);
     }
 
     @Test
     final void testListAll() {
-        List<Review> listReview = reviewDao.listAll();
+        List<Review> listReview = reviewDAO.listAll();
         listReview.forEach(r -> System.out.println(r.getReviewId() + " - " + r.getProduct().getTitle() + " - "
                 + r.getCustomer().getFullName() + " - " + r.getHeadline() + " - " + r.getRating()));
 
-        Assertions.assertTrue(listReview.size() > 0);
+        assertTrue(listReview.size() > 0);
     }
 
     @Test
     final void testCount() {
-        long totalReviews = reviewDao.count();
+        long totalReviews = reviewDAO.count();
         System.out.println("Total Reviews: " + totalReviews);
 
-        Assertions.assertTrue(totalReviews > 0);
+        assertTrue(totalReviews > 0);
     }
 
+    @Test
+    public void testFindByCustomerAndProductNotFound() {
+        Integer customerId = 100;
+        Integer productId = 100;
+
+        Review result = reviewDAO.findByCustomerAndProduct(customerId, productId);
+
+        assertNull(result);
+    }
+
+    @Test
+    public void testFindByCustomerAndBookFound() {
+        Integer customerId = 1;
+        Integer productId = 10;
+
+        Review result = reviewDAO.findByCustomerAndProduct(customerId, productId);
+
+        assertNotNull(result);
+    }
+
+    @Test
+    public void testListMostRecent() {
+        List<Review> recentReviews = reviewDAO.listMostRecent();
+
+        assertEquals(3, recentReviews.size());
+    }
+
+    @Test
+    public void testCountByCustomerNotFound() {
+        int customerId = 100;
+        long reviewCount = reviewDAO.countByCustomer(customerId);
+
+        assertEquals(0, reviewCount);
+    }
+
+    @Test
+    public void testCountByCustomerFound() {
+        int customerId = 1;
+        long reviewCount = reviewDAO.countByCustomer(customerId);
+
+        assertEquals(4, reviewCount);
+    }
 }

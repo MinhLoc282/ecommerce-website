@@ -1,15 +1,13 @@
-/**
- *
- */
 package com.ecommerce.model.dao;
 
 import com.ecommerce.model.entity.Customer;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class CustomerDAOTest {
 
@@ -41,7 +39,7 @@ class CustomerDAOTest {
         customer.setZipCode("100000");
         Customer savedCustomer = customerDAO.create(customer);
 
-        Assertions.assertTrue(savedCustomer.getCustomerId() > 0);
+        assertTrue(savedCustomer.getCustomerId() > 0);
     }
 
     @Test
@@ -51,7 +49,7 @@ class CustomerDAOTest {
         customer.setFirstName(firstName);
         Customer updatedCustomer = customerDAO.update(customer);
 
-        Assertions.assertEquals(updatedCustomer.getFirstName(), firstName);
+        assertEquals(updatedCustomer.getFirstName(), firstName);
     }
 
     @Test
@@ -59,7 +57,7 @@ class CustomerDAOTest {
         Integer customerId = 1;
         Customer customer = customerDAO.get(customerId);
 
-        Assertions.assertNotNull(customer);
+        assertNotNull(customer);
     }
 
     @Test
@@ -68,7 +66,7 @@ class CustomerDAOTest {
         customerDAO.delete(customerId);
         Customer customer = customerDAO.get(1);
 
-        Assertions.assertNull(customer);
+        assertNull(customer);
     }
 
     @Test
@@ -78,14 +76,14 @@ class CustomerDAOTest {
             System.out.println(customer.getFirstName());
         }
 
-        Assertions.assertFalse(listCustomers.isEmpty());
+        assertFalse(listCustomers.isEmpty());
     }
 
     @Test
     final void testCount() {
         long totalCustomers = customerDAO.count();
 
-        Assertions.assertEquals(1, totalCustomers);
+        assertEquals(1, totalCustomers);
     }
 
     @Test
@@ -93,19 +91,16 @@ class CustomerDAOTest {
         String email = "customer@gmail.com";
         Customer customer = customerDAO.findByEmail(email);
 
-        Assertions.assertNotNull(customer);
+        assertNotNull(customer);
     }
 
-    /**
-     * Test method for {@link CustomerDAO#findByEmailAndPassword}.
-     */
     @Test
     final void testFindByEmailAndPasswordSuccess() {
         String email = "customer@gmail.com";
         String password = "customer";
         Customer customer = customerDAO.findByEmailAndPassword(email, password);
 
-        Assertions.assertNotNull(customer);
+        assertNotNull(customer);
     }
 
     @Test
@@ -114,7 +109,7 @@ class CustomerDAOTest {
         String password = "admin";
         Customer customer = customerDAO.findByEmailAndPassword(email, password);
 
-        Assertions.assertNull(customer);
+        assertNull(customer);
     }
 
 }

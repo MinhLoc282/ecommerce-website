@@ -51,6 +51,7 @@ public class PaymentService {
 
         APIContext apiContext = new APIContext(CLIENT_ID, CLIENT_SECRET, mode);
 
+        // redirect tp PayPal's payment page
         try {
             Payment authorizedPayment = requestPayment.create(apiContext);
             System.out.println("====== AUTHORIZED PAYMENT ======");
@@ -61,12 +62,9 @@ public class PaymentService {
             response.sendRedirect(approvalURL);
 
         } catch (PayPalRESTException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             throw new ServletException("Error in authorizing payment.");
         }
-
-        // redirect tp PayPal's payment page
     }
 
     private String getApprovalURL(Payment authorizedPayment) {

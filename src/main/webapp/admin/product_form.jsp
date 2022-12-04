@@ -113,6 +113,7 @@
                                     <label for="publishDate" class="col-md-12">Publish Date:</label>
                                     <div class="col-md-12">
                                         <input class="form-control form-control-line" type="date" name="publishDate"
+                                               id="publishDate"
                                                value="<fmt:formatDate pattern='yyyy-MM-dd' value='${product.publishDate}' />"
                                                required="required"/></div>
                                 </div>
@@ -183,7 +184,7 @@
                                 <div class="form-group">
                                     <label for="publishDate" class="col-md-12">Publish Date:</label>
                                     <div class="col-md-12">
-                                        <input class="form-control form-control-line" type="text" id="publishDate"
+                                        <input class="form-control form-control-line" type="date" id="publishDate"
                                                name="publishDate"
                                                value="<fmt:formatDate pattern='MM/dd/yyyy' value='${product.publishDate}' />"/>
                                     </div>

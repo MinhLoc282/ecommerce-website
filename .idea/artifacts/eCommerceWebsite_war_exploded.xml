@@ -41,6 +41,7 @@
           <element id="library" level="project" name="Maven: com.paypal.sdk:rest-api-sdk:1.14.0" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.21" />
           <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.2.2" />
+          <element id="library" level="project" name="Maven: org.jetbrains:annotations:23.0.0" />
         </element>
       </element>
       <element id="directory" name="META-INF">

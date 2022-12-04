@@ -10,7 +10,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Table(name = "category", catalog = "ecommercedb")
 @NamedQueries({@NamedQuery(name = "Category.findAll", query = "SELECT c FROM Category c ORDER BY c.name"),
         @NamedQuery(name = "Category.countAll", query = "SELECT COUNT(c) FROM Category c"),
-        @NamedQuery(name = "Category.findByName", query = "SELECT c FROM Category c WHERE c.name = :name")})
+        @NamedQuery(name = "Category.findByName", query = "SELECT c FROM Category c WHERE c.name = :categoryName")})
 public class Category {
     private Integer categoryId;
     private String name;

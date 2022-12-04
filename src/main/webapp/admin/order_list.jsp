@@ -91,7 +91,7 @@
                                         <td>${order.status}</td>
                                         <td>${order.orderDate}</td>
                                         <td>
-                                            <a href="view_order?id=${order.orderId}">View</a> &nbsp; &nbsp;
+                                            <a href="view_order?id=${order.orderId}">View</a> &nbsp;
                                             <a href="edit_order?id=${order.orderId}">Edit</a> &nbsp;
                                             <a href="javascript:void(0);" class="deleteLink" id="${order.orderId}">Delete</a>
                                         </td>

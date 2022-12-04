@@ -90,15 +90,15 @@
                             <td>$${item.price}</td>
                             <td>$${item.price * item.quantity}</td>
                         </tr>
-                        <tr>
-                            <td colspan="5" align="right">
-                                <p>Subtotal: $${transaction.amount.details.subtotal}</p>
-                                <p>Tax: $${transaction.amount.details.tax}</p>
-                                <p>Shipping Fee: $${transaction.amount.details.shipping}</p>
-                                <p>TOTAL: $${transaction.amount.total}</p>
-                            </td>
-                        </tr>
                     </c:forEach>
+                    <tr>
+                        <td colspan="5" align="right">
+                            <p>Subtotal: $${transaction.amount.details.subtotal}</p>
+                            <p>Tax: $${transaction.amount.details.tax}</p>
+                            <p>Shipping Fee: $${transaction.amount.details.shipping}</p>
+                            <p>TOTAL: $${transaction.amount.total}</p>
+                        </td>
+                    </tr>
                 </table>
             </td>
         </tr>

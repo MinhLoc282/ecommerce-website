@@ -1,15 +1,13 @@
-/**
- *
- */
 package com.ecommerce.model.dao;
 
 import com.ecommerce.model.entity.User;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class UserDAOTest {
 
@@ -34,7 +32,7 @@ class UserDAOTest {
 
         user = userDAO.create(user);
 
-        Assertions.assertTrue(user.getUserId() > 0);
+        assertTrue(user.getUserId() > 0);
     }
 
     @Test
@@ -49,7 +47,7 @@ class UserDAOTest {
         String expected = "user1";
         String actual = user.getPassword();
 
-        Assertions.assertEquals(expected, actual);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -57,7 +55,7 @@ class UserDAOTest {
         Integer userId = 1;
         User user = userDAO.get(userId);
 
-        Assertions.assertNotNull(user);
+        assertNotNull(user);
     }
 
     @Test
@@ -65,7 +63,7 @@ class UserDAOTest {
         Integer userId = 99;
         User user = userDAO.get(userId);
 
-        Assertions.assertNull(user);
+        assertNull(user);
     }
 
     @Test
@@ -75,7 +73,7 @@ class UserDAOTest {
 
         User user = userDAO.get(userId);
 
-        Assertions.assertNull(user);
+        assertNull(user);
     }
 
     @Test
@@ -90,14 +88,14 @@ class UserDAOTest {
 
         listUsers.forEach(c -> System.out.println(c.getEmail()));
 
-        Assertions.assertTrue(listUsers.size() > 0);
+        assertTrue(listUsers.size() > 0);
     }
 
     @Test
     void testCount() {
         long totalUsers = userDAO.count();
 
-        Assertions.assertEquals(2, totalUsers);
+        assertEquals(2, totalUsers);
     }
 
     @Test
@@ -105,25 +103,25 @@ class UserDAOTest {
         String email = "admin@gmail.com";
         User user = userDAO.findByEmail(email);
 
-        Assertions.assertNotNull(user);
+        assertNotNull(user);
     }
 
     @Test
-    public void testCheckEmailAndPasswordSuccess() {
+    public void testFindByEmailAndPasswordSuccess() {
         String email = "admin@gmail.com";
         String password = "admin";
-        boolean checkResult = userDAO.checkEmailAndPassword(email, password);
+        boolean checkResult = userDAO.findByEmailAndPassword(email, password);
 
-        Assertions.assertTrue(checkResult);
+        assertTrue(checkResult);
     }
 
     @Test
-    public void testCheckEmailAndPasswordFailed() {
+    public void testFindByEmailAndPasswordFailed() {
         String email = "admin@gmail.com";
         String password = "1234";
-        boolean checkResult = userDAO.checkEmailAndPassword(email, password);
+        boolean checkResult = userDAO.findByEmailAndPassword(email, password);
 
-        Assertions.assertFalse(checkResult);
+        assertFalse(checkResult);
     }
 
 }

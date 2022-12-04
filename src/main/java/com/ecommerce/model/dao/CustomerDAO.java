@@ -65,7 +65,6 @@ public class CustomerDAO extends JpaDAO<Customer> implements GenericDAO<Customer
         if (!result.isEmpty()) {
             return result.get(0);
         }
-
         return null;
     }
 
