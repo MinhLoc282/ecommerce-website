@@ -10,6 +10,7 @@
 ![mysql](https://img.shields.io/badge/mysql-%2300f.svg?&style=for-the-badge&logo=mysql&logoColor=white)
 ![hibernate](https://img.shields.io/badge/hibernate-%20brightgreen.svg?&style=for-the-badge&logo=hibernate&logoColor=white)
 ![eclipse](https://img.shields.io/badge/eclipse-%20blueviolet.svg?&style=for-the-badge&logo=eclipse&logoColor=white)
+![intellij](https://img.shields.io/badge/intellij-%20informational.svg?&style=for-the-badge&logo=intellij&logoColor=white)
 ![junit](https://img.shields.io/badge/junit-%20yellowgreen.svg?&style=for-the-badge&logo=junit&logoColor=white)
 
 <br>
