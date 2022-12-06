@@ -79,7 +79,6 @@ public class PaymentService {
                 break;
             }
         }
-
         return approvalURL;
     }
 

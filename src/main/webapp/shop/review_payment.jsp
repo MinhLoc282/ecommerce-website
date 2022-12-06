@@ -18,7 +18,7 @@
     <div class="container">
         <div class="row">
             <div class="text-center">
-                <h1>Please carefully review the following information before making payment</h1>
+                <h1>Please carefully review the following information</h1>
             </div>
             <div class="col-md-6 text-center">
                 <h2>Payer Information</h2>
@@ -82,7 +82,7 @@
     <div class="container">
         <div class="text-center">
             <h2>Transaction Details</h2>
-            <b>Description: ${transaction.description}</b>
+            <p>${transaction.description}</p>
         </div>
         <div class="row">
             <table class="table table-condensed">

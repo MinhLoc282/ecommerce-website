@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="shop/css/style.css">
 
-    <title>Payment Receipt - Online Store</title>
+    <title>Payment Receipt</title>
 </head>
 <body>
 <%@ include file="header.jsp" %>
@@ -18,8 +18,7 @@
     <div class="container">
         <div class="row">
             <div class="text-center">
-                <h1>You have made payment successfully. Thank you for purchasing!</h1>
-                <h2>Your Payment Receipt</h2>
+                <h1>Thank you for purchasing!</h1>
             </div>
             <div class="col-md-6 text-center">
                 <h2>Seller Information</h2>
@@ -63,9 +62,8 @@
     <div class="container">
         <div class="text-center">
             <h2>Order Details</h2>
-            <h6>Order ID: ${orderId}</h6>
-            <h6>Ordered by: ${loggedCustomer.fullName}</h6>
-            <h6>Transaction Description: ${transaction.description}</h6>
+            <p>Ordered by: ${loggedCustomer.fullName}</p>
+            <p>${transaction.description}</p>
         </div>
         <div class="row">
             <table class="table table-condensed">
@@ -99,9 +97,23 @@
                 </tbody>
             </table>
         </div>
+        <div>
+            <button class="btn btn-primary btn-lg pl-5 pr-5" onclick="javascript:showPrintReceiptPopup();">Print
+                Receipt
+            </button>
+        </div>
     </div>
 </section>
-
 <%@ include file="footer.jsp" %>
+<script>
+    function showPrintReceiptPopup() {
+        let width = 1080;
+        let height = 720;
+        let left = (screen.width - width) / 2;
+        let top = (screen.height - height) / 2;
+
+        window.open('shop/print_receipt.jsp', '_blank', 'width=' + width, ', height=' + height, ', top=' + top, ', left=' + left)
+    }
+</script>
 </body>
 </html>
