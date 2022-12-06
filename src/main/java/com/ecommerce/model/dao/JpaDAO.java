@@ -1,7 +1,5 @@
 package com.ecommerce.model.dao;
 
-import org.jetbrains.annotations.NotNull;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -80,7 +78,7 @@ public class JpaDAO<E> {
     }
 
     @SuppressWarnings("unchecked")
-    public List<E> findWithNamedQuery(String queryName, @NotNull Map<String, Object> parameters) {
+    public List<E> findWithNamedQuery(String queryName, Map<String, Object> parameters) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         Query query = entityManager.createNamedQuery(queryName);
         Set<Entry<String, Object>> setParameters = parameters.entrySet();
@@ -104,10 +102,32 @@ public class JpaDAO<E> {
     }
 
     @SuppressWarnings("unchecked")
+    public List<Object[]> findWithNamedQueryObjects(String queryName) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        Query query = entityManager.createNamedQuery(queryName);
+        List<Object[]> result = query.getResultList();
+        entityManager.close();
+        return result;
+    }
+
+    @SuppressWarnings("unchecked")
     public List<Object[]> findWithNamedQueryObjects(String queryName, String paramName, Object paramValue) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         Query query = entityManager.createNamedQuery(queryName);
         query.setParameter(paramName, paramValue);
+        List<Object[]> result = query.getResultList();
+        entityManager.close();
+        return result;
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Object[]> findWithNamedQueryObjects(String queryName, Map<String, Object> parameters) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        Query query = entityManager.createNamedQuery(queryName);
+        Set<Entry<String, Object>> setParameters = parameters.entrySet();
+        for (Entry<String, Object> entry : setParameters) {
+            query.setParameter(entry.getKey(), entry.getValue());
+        }
         List<Object[]> result = query.getResultList();
         entityManager.close();
         return result;

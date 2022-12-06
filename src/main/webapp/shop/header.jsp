@@ -68,7 +68,7 @@
                                 <a href="view_profile" class="dropdown-item">Welcome,
                                         ${loggedCustomer.fullName}</a>
                                 <div class="dropdown-divider"></div>
-                                <a href="view_orders" class="dropdown-item">My Orders</a>
+                                <a href="view_order" class="dropdown-item">My Orders</a>
                                 <div class="dropdown-divider"></div>
                                 <a href="logout" class="dropdown-item">Logout</a>
                             </c:if>

@@ -11,8 +11,7 @@ import java.io.IOException;
 
 @WebServlet(name = "SubmitReviewServlet", value = "/submit_review")
 public class SubmitReviewServlet extends HttpServlet {
-
-
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

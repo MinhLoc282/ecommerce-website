@@ -2,9 +2,7 @@ package com.ecommerce.model.dao;
 
 import com.ecommerce.model.entity.Product;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class ProductDAO extends JpaDAO<Product> implements GenericDAO<Product> {
 
@@ -58,7 +56,7 @@ public class ProductDAO extends JpaDAO<Product> implements GenericDAO<Product> {
     }
 
     public List<Product> lisNewProducts(int categoryId) {
-        return super.findWithNamedQuery("Product.listNewProductsByCategory", "categoryId", categoryId);
+        return super.findWithNamedQuery("Product.listNewProductsFindByCategory", "categoryId", categoryId);
     }
 
     public List<Product> search(String keyword) {
@@ -74,7 +72,7 @@ public class ProductDAO extends JpaDAO<Product> implements GenericDAO<Product> {
     }
 
     public List<Product> listBestSellingProducts(int categoryId) {
-        return super.findWithNamedQuery("OrderDetail.bestSellingByCategory", "categoryId", categoryId);
+        return super.findWithNamedQuery("OrderDetail.bestSellingFindByCategory", "categoryId", categoryId);
     }
 
     public List<Product> listMostFavoredProducts() {
@@ -92,7 +90,7 @@ public class ProductDAO extends JpaDAO<Product> implements GenericDAO<Product> {
 
     public List<Product> listMostFavoredProducts(int categoryId) {
         List<Product> mostFavoredProducts = new ArrayList<>();
-        List<Object[]> result = super.findWithNamedQueryObjects("Review.mostFavoredProductsByCategory", "categoryId", categoryId);
+        List<Object[]> result = super.findWithNamedQueryObjects("Review.mostFavoredProductsFindByCategory", "categoryId", categoryId);
 
         if (!result.isEmpty()) {
             for (Object[] elements : result) {
@@ -109,6 +107,23 @@ public class ProductDAO extends JpaDAO<Product> implements GenericDAO<Product> {
 
     public List<Product> sortByPriceAsc(int categoryId) {
         return super.findWithNamedQuery("Product.sortByPriceAsc", "categoryId", categoryId);
+    }
+
+    public List<Product> listRatingProducts(int categoryId, double ratingStars) {
+        List<Product> listRatingProducts = new ArrayList<>();
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("categoryId", categoryId);
+        parameters.put("ratingStars", ratingStars);
+
+        List<Object[]> result = super.findWithNamedQueryObjects("Review.listRatingProductsFindByCategory", parameters);
+
+        if (!result.isEmpty()) {
+            for (Object[] elements : result) {
+                Product product = (Product) elements[0];
+                listRatingProducts.add(product);
+            }
+        }
+        return listRatingProducts;
     }
 
 }

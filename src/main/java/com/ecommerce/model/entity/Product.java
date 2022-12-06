@@ -16,7 +16,7 @@ import static javax.persistence.GenerationType.IDENTITY;
         @NamedQuery(name = "Product.countByCategory", query = "SELECT COUNT(p) FROM Product p WHERE p.category.categoryId = :categoryId"),
         @NamedQuery(name = "Product.sortByPriceDesc", query = "SELECT p FROM Product p JOIN Category c ON p.category.categoryId = c.categoryId AND c.categoryId = :categoryId ORDER BY p.price DESC"),
         @NamedQuery(name = "Product.sortByPriceAsc", query = "SELECT p FROM Product p JOIN Category c ON p.category.categoryId = c.categoryId AND c.categoryId = :categoryId ORDER BY p.price"),
-        @NamedQuery(name = "Product.listNewProductsByCategory", query = "SELECT p FROM Product p JOIN Category c ON p.category.categoryId = c.categoryId AND c.categoryId = :categoryId ORDER BY p.publishDate DESC")})
+        @NamedQuery(name = "Product.listNewProductsFindByCategory", query = "SELECT p FROM Product p JOIN Category c ON p.category.categoryId = c.categoryId AND c.categoryId = :categoryId ORDER BY p.publishDate DESC")})
 public class Product {
 
     private Integer productId;

@@ -195,6 +195,7 @@ public class ProductService {
 
         String sort = request.getParameter("sort");
         String pageId = request.getParameter("page");
+        String rating = request.getParameter("rating");
 
         if (pageId == null) {
             pageId = "1";
@@ -206,6 +207,19 @@ public class ProductService {
             return;
         }
 
+        if (Objects.equals(rating, "4.5")) {
+            listProducts = productDAO.listRatingProducts(categoryId, 4.5);
+            request.setAttribute("4.5rating", listProducts);
+        }
+        if (Objects.equals(rating, "4.0")) {
+            listProducts = productDAO.listRatingProducts(categoryId, 4.0);
+        }
+        if (Objects.equals(rating, "3.5")) {
+            listProducts = productDAO.listRatingProducts(categoryId, 3.5);
+        }
+        if (Objects.equals(rating, "3.0")) {
+            listProducts = productDAO.listRatingProducts(categoryId, 3.0);
+        }
         if (Objects.equals(sort, "price_desc")) {
             listProducts = productDAO.sortByPriceDesc(categoryId);
         }
@@ -236,11 +250,23 @@ public class ProductService {
         int numEnd = Integer.parseInt(pageId) * numberOfProducts - 1;
         int numBegin = numEnd - numberOfProducts + 1;
 
+        int rating4_5 = productDAO.listRatingProducts(categoryId, 4.5).size();
+        int rating4 = productDAO.listRatingProducts(categoryId, 4.0).size();
+        int rating3_5 = productDAO.listRatingProducts(categoryId, 3.5).size();
+        int rating3 = productDAO.listRatingProducts(categoryId, 3.0).size();
+
+        request.setAttribute("rating4_5", rating4_5);
+        request.setAttribute("rating4", rating4);
+        request.setAttribute("rating3_5", rating3_5);
+        request.setAttribute("rating3", rating3);
+
         request.setAttribute("listProducts", listProducts);
         request.setAttribute("listCategories", listCategories);
         request.setAttribute("category", category);
 
         request.setAttribute("sort", sort);
+        request.setAttribute("rating", rating);
+
         request.setAttribute("pageId", pageId);
         request.setAttribute("numberOfPages", numberOfPages);
         request.setAttribute("numBegin", numBegin);

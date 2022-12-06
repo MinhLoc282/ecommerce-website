@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.ecommerce.service;
 
 import com.ecommerce.model.dao.ProductDAO;

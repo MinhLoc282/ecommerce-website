@@ -83,7 +83,7 @@ public class OrderService {
         String paymentMethod = request.getParameter("paymentMethod");
         ProductOrder order = readOrderInfo();
 
-        if (paymentMethod.equals("paypal")) {
+        if (paymentMethod.equals("PayPal")) {
             PaymentService paymentService = new PaymentService(request, response);
             request.getSession().setAttribute("orderForPayPal", order);
             paymentService.authorizePayment(order);
@@ -225,12 +225,12 @@ public class OrderService {
         }
 
         HttpSession session = request.getSession();
-        Object isPendingProduct = session.getAttribute("PendingToAddToOrder");
+        Object isPendingProduct = session.getAttribute("NewProductPendingToAddToOrder");
 
         if (isPendingProduct == null) {
             session.setAttribute("order", order);
         } else {
-            session.removeAttribute("PendingToAddToOrder");
+            session.removeAttribute("NewProductPendingToAddToOrder");
         }
 
         generateCountryList(request);
@@ -239,7 +239,6 @@ public class OrderService {
     }
 
     public void showAddProductForm() throws ServletException, IOException {
-        // TODO Auto-generated method stub
         ProductDAO productDAO = new ProductDAO();
         List<Product> listProduct = productDAO.listAll();
         request.setAttribute("listProduct", listProduct);
@@ -270,7 +269,7 @@ public class OrderService {
         order.getOrderDetails().add(orderDetail);
 
         request.setAttribute("product", product);
-        session.setAttribute("PendingToAddToOrder", true);
+        session.setAttribute("NewProductPendingToAddToOrder", true);
 
         forwardToPage("add_product_result.jsp", request, response);
     }

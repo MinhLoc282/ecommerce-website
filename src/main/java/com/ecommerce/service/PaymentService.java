@@ -18,7 +18,7 @@ import java.util.List;
 import static com.ecommerce.utility.CommonUtility.forwardToPage;
 
 public class PaymentService {
-    // sandbox
+
     private static final String CLIENT_ID = "AbhDLOGRRsGvvUvgO74_FwMPhpS8BEbno1IW1pBxXTGV5z3TGSEIqleJG0JUk-Vw__pct6mvGRnTZr8S";
     private static final String CLIENT_SECRET = "EGV1Rr0myrwVI8_LS6o8hNmJOSR2nULOPGhYMKWwzHqgHUNpfR-F8NxPMyxFJm51DdSUmm-fUbl_KDxt";
     private final String mode = "sandbox";
@@ -151,7 +151,7 @@ public class PaymentService {
     private List<Transaction> getTransactionInformation(ProductOrder order) {
         // get transaction details
         Transaction transaction = new Transaction();
-        transaction.setDescription("Products ordered on Online Store.");
+        transaction.setDescription("Products ordered on eCommerce store.");
         Amount amount = getAmountDetails(order);
         transaction.setAmount(amount);
 

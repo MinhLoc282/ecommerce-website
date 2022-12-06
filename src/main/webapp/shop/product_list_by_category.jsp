@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +23,7 @@
                 <span class="primary-color"></span> Showing Products
             </h3>
 
-            <h6 class="text-uppercase">Categories</h6>
+            <p class="text-uppercase">Categories</p>
 
             <c:forEach items="${listCategories}" var="category">
                 <div class="filter-checkbox">
@@ -31,23 +32,40 @@
                 </div>
             </c:forEach>
 
-            <h6 class="text-uppercase">Rating</h6>
+            <p class="text-uppercase">Rating</p>
 
             <div class="filter-checkbox">
-                <c:forTokens items="${starts = 'on,on,on,on,half'}" delims="," var="star">
-                    <c:if test="${star eq 'on'}">
-                        <img src="shop/images/rating_on.png" alt=""/>
-                    </c:if>
-                    <c:if test="${star eq 'off'}">
-                        <img src="shop/images/rating_off.png" alt=""/>
-                    </c:if>
-                    <c:if test="${star eq 'half'}">
-                        <img src="shop/images/rating_half.png" alt=""/>
-                    </c:if>
-                </c:forTokens>
-                
+                <a href="view_category?id=${category.categoryId}&rating=${'4.5'}" style="color: #444342">
+                    <c:forTokens items="${'on,on,on,on,half'}" delims="," var="star">
+                        <%@ include file="rating_stars.jsp" %>
+                    </c:forTokens>
+                    &nbsp;4.5 & up (${rating4_5})
+                </a>
             </div>
-
+            <div class="filter-checkbox">
+                <a href="view_category?id=${category.categoryId}&rating=${'4.0'}" style="color: #444342">
+                    <c:forTokens items="${'on,on,on,on,off'}" delims="," var="star">
+                        <%@ include file="rating_stars.jsp" %>
+                    </c:forTokens>
+                    &nbsp;4.0 & up (${rating4})
+                </a>
+            </div>
+            <div class="filter-checkbox">
+                <a href="view_category?id=${category.categoryId}&rating=${'3.5'}" style="color: #444342">
+                    <c:forTokens items="${'on,on,on,half,off'}" delims="," var="star">
+                        <%@ include file="rating_stars.jsp" %>
+                    </c:forTokens>
+                    &nbsp;3.5 & up (${rating3_5})
+                </a>
+            </div>
+            <div class="filter-checkbox">
+                <a href="view_category?id=${category.categoryId}&rating=${'3.0'}" style="color: #444342">
+                    <c:forTokens items="${'on,on,on,off,off'}" delims="," var="star">
+                        <%@ include file="rating_stars.jsp" %>
+                    </c:forTokens>
+                    &nbsp;3.0 & up (${rating3})
+                </a>
+            </div>
         </div>
 
         <div class="col-md-8 col-lg-9">
