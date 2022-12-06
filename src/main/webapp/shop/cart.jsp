@@ -62,7 +62,7 @@
                                 <th style="width: 10%">Price</th>
                                 <th style="width: 10%">Subtotal</th>
                                 <th style="width: 15%">
-                                    <a href="#" type="button" id="clearCart">Clear All</a>
+                                    <a href="clear_cart" type="button" id="clearCart">Clear All</a>
                                 </th>
                             </tr>
                             </thead>

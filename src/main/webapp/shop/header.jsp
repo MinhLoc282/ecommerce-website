@@ -19,7 +19,7 @@
                         <span class="sr-only">(current)</span>
                     </a></li>
                     <li class="nav-item dropdown mega-menu"><a
-                            class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                            class="nav-link dropdown-toggle" href="#"
                             role="button" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">Shop </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -38,7 +38,7 @@
                     </li>
 
                     <li class="nav-item dropdown"><a
-                            class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                            class="nav-link dropdown-toggle" href="#"
                             role="button" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">Pages </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -48,11 +48,10 @@
                         </div>
                     </li>
 
-
                     <li class="nav-item"><a class="nav-link" href="">Contact</a></li>
 
                     <li class="nav-item dropdown"><a
-                            class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                            class="nav-link dropdown-toggle" href="#"
                             role="button" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false"> <i class="fas fa-solid fa-user"></i>
                     </a>
@@ -78,7 +77,7 @@
                     <c:set var="cart" value="${sessionScope['cart']}"/>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                        <a class="nav-link dropdown-toggle" href="#"
                            role="button" data-toggle="dropdown" aria-haspopup="true"
                            aria-expanded="false"><i class="fas fa-shopping-cart"></i> <span
                                 class="badge badge-pill badge-primary">${cart.totalItems}</span></a>

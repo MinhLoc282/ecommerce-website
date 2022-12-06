@@ -70,33 +70,28 @@
                     <div class="card-body">
                         <h4 class="card-title">Product List</h4>
                         <div class="table-responsive" id="tableProduct">
-                            <input class="search form-control form-control-line" placeholder="Search"/>
-                            <table class="table">
+                            <table class="table" id="table_id">
                                 <thead>
                                 <tr>
                                     <th>Index</th>
                                     <th>ID</th>
                                     <th>Image</th>
                                     <th>Title
-                                        <button class="sort" data-sort="title"><i class="fa fa-solid fa-sort"></i>
-                                        </button>
+
                                     </th>
                                     <th>Category
-                                        <button class="sort" data-sort="category"><i class="fa fa-solid fa-sort"></i>
-                                        </button>
+
                                     </th>
                                     <th>Price
-                                        <button class="sort" data-sort="price"><i class="fa fa-solid fa-sort"></i>
-                                        </button>
+
                                     </th>
                                     <th>Last Updated
-                                        <button class="sort" data-sort="lastUpdated"><i class="fa fa-solid fa-sort"></i>
-                                        </button>
+
                                     </th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
-                                <tbody class="list">
+                                <tbody class="list" id="myTable">
                                 <c:forEach var="product" items="${listProducts}" varStatus="status">
                                     <tr>
                                         <td>${status.index + 1}</td>
@@ -160,6 +155,12 @@
 <!-- jQuery peity -->
 <script src="../admin/node_modules/peity/jquery.peity.min.js"></script>
 <script src="../admin/node_modules/peity/jquery.peity.init.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable();
+    });
+</script>
 </body>
 <script>
     $(document).ready(function () {

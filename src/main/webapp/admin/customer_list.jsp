@@ -70,7 +70,7 @@
                     <div class="card-body">
                         <h4 class="card-title">User List</h4>
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" id="table_id">
                                 <thead>
                                 <tr>
                                     <th>Index</th>
@@ -147,6 +147,13 @@
 <!-- jQuery peity -->
 <script src="../admin/node_modules/peity/jquery.peity.min.js"></script>
 <script src="../admin/node_modules/peity/jquery.peity.init.js"></script>
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable();
+    });
+</script>
 </body>
 <script>
     $(document).ready(function () {

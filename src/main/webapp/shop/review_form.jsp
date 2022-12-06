@@ -11,9 +11,9 @@
 
     <script type="text/javascript" src="shop/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="shop/js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="shop/js/jquery.rateyo.min.js"></script>
 
-    <script src="shop/js/jquery.rateyo.min.js"></script>
-
+    <title>${loggedCustomer.fullName} Reviews</title>
 </head>
 <body>
 <%@ include file="header.jsp" %>
@@ -30,8 +30,7 @@
                 <h2 class="mb-3 mt-0">${product.title}</h2>
                 <p class="lead mt-2 mb-3 primary-color">
                 <div id="rateYo"></div>
-                </p>
-                <input type="hidden" id="rating" name="rating"/>
+                <input type="hidden" id="rating" name="rating" required="required"/>
                 <input type="hidden" name="productId" value="${product.productId}"/>
                 <input type="text" name="headline" size="60"
                        placeholder="Headline or summary for your review (required)" required="required"/>
