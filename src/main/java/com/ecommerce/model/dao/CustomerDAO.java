@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.ecommerce.model.dao;
 
 import com.ecommerce.model.entity.Customer;

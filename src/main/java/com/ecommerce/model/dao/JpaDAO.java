@@ -102,15 +102,6 @@ public class JpaDAO<E> {
     }
 
     @SuppressWarnings("unchecked")
-    public List<Object[]> findWithNamedQueryObjects(String queryName) {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        Query query = entityManager.createNamedQuery(queryName);
-        List<Object[]> result = query.getResultList();
-        entityManager.close();
-        return result;
-    }
-
-    @SuppressWarnings("unchecked")
     public List<Object[]> findWithNamedQueryObjects(String queryName, String paramName, Object paramValue) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         Query query = entityManager.createNamedQuery(queryName);

@@ -1,10 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,9 +27,7 @@
     <link href="../admin/html/css/style.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="../admin/html/css/colors/default.css" id="theme" rel="stylesheet">
-
 </head>
-
 <body class="fix-header card-no-border fix-sidebar">
 <%@ include file="header.jsp" %>
 <%@ include file="slidebar.jsp" %>
@@ -149,18 +146,20 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label class="col-md-12">Leave blank if you don't want to change it.</label>
+                                </div>
+                                <div class="form-group">
                                     <label class="col-md-12">Password</label>
                                     <div class="col-md-12">
                                         <input class="form-control form-control-line" type="password" name="password"
-                                               size="20" value="${user.password}" required="required" maxlength="32">
+                                               size="20" value="${user.password}" maxlength="32">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-12">Confirm Password:</label>
+                                    <label class="col-md-12">Confirm New Password:</label>
                                     <div class="col-md-12">
                                         <input class="form-control form-control-line" type="password"
-                                               name="confirmPassword" size="20" value="${user.password}"
-                                               required="required" maxlength="32">
+                                               name="confirmPassword" size="20" value="${user.password}" maxlength="32">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -173,7 +172,6 @@
                             </form>
                         </c:if>
                     </div>
-
                 </div>
             </div>
             <!-- Column -->
@@ -220,7 +218,6 @@
 
 <script type="text/javascript" src="../assets/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="../assets/js/jquery.validate.min.js"></script>
-
 <script type="text/javascript" src="../assets/js/jquery.richtext.min.js"></script>
 </body>
 </html>

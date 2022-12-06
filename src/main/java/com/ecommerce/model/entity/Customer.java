@@ -8,7 +8,6 @@ import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-
 @Entity
 @Table(name = "customer", catalog = "ecommercedb", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 @NamedQueries({@NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c ORDER BY c.registerDate DESC"),
