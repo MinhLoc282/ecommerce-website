@@ -102,22 +102,25 @@
                                     <div class="col-md-12">
                                         <input class="form-control form-control-line" type="password"
                                                name="checkPassword" size="20" value="${user.password}"
-                                               required="required" maxlength="32">
+                                               required="required" minlength="6" maxlength="32">
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-12">Leave blank if you don't want to change it.</label>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-12">New Password</label>
                                     <div class="col-md-12">
                                         <input class="form-control form-control-line" type="password" name="password"
-                                               size="20" value="${user.password}" required="required" maxlength="32">
+                                               size="20" value="${user.password}" maxlength="32">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-12">Confirm Password</label>
+                                    <label class="col-md-12">Confirm New Password</label>
                                     <div class="col-md-12">
                                         <input class="form-control form-control-line" type="password"
                                                name="confirmPassword" size="20" value="${user.password}"
-                                               required="required" maxlength="32">
+                                               maxlength="32">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -146,20 +149,19 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-12">Leave blank if you don't want to change it.</label>
-                                </div>
-                                <div class="form-group">
                                     <label class="col-md-12">Password</label>
                                     <div class="col-md-12">
                                         <input class="form-control form-control-line" type="password" name="password"
-                                               size="20" value="${user.password}" maxlength="32">
+                                               size="20" value="${user.password}" required="required" minlength="6"
+                                               maxlength="32">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-12">Confirm New Password:</label>
+                                    <label class="col-md-12">Confirm Password:</label>
                                     <div class="col-md-12">
                                         <input class="form-control form-control-line" type="password"
-                                               name="confirmPassword" size="20" value="${user.password}" maxlength="32">
+                                               name="confirmPassword" size="20" value="${user.password}"
+                                               required="required" minlength="6" maxlength="32">
                                     </div>
                                 </div>
                                 <div class="form-group">
