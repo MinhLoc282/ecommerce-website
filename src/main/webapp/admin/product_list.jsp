@@ -76,22 +76,14 @@
                                     <th>Index</th>
                                     <th>ID</th>
                                     <th>Image</th>
-                                    <th>Title
-
-                                    </th>
-                                    <th>Category
-
-                                    </th>
-                                    <th>Price
-
-                                    </th>
-                                    <th>Last Updated
-
-                                    </th>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Last Updated</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
-                                <tbody class="list" id="myTable">
+                                <tbody>
                                 <c:forEach var="product" items="${listProducts}" varStatus="status">
                                     <tr>
                                         <td>${status.index + 1}</td>
@@ -172,12 +164,6 @@
                 }
             });
         });
-
-        let options = {
-            valueNames: ['title', 'category', 'price', 'lastUpdated']
-        };
-
-        let userList = new List('tableProduct', options);
     });
 </script>
 </html>
