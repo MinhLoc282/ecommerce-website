@@ -22,7 +22,7 @@
         </div>
         <div class="col-md-6 mt-5 mt-md-2 text-center text-md-left">
             <h2 class="mb-3 mt-0">${product.title}</h2>
-            <h1>Your review has been posted. Thank you!</h1>
+            <h4>Your review has been posted. Thank you!</h4>
         </div>
     </div>
 </div>

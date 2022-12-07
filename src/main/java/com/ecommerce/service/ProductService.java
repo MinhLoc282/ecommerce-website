@@ -188,6 +188,80 @@ public class ProductService {
         }
     }
 
+    public void listAllProduct() throws ServletException, IOException {
+        List<Product> listProducts = productDAO.listAll();
+        List<Category> listCategories = categoryDAO.listAll();
+
+        String sort = request.getParameter("sort");
+        String pageId = request.getParameter("page");
+
+        if (pageId == null) {
+            pageId = "1";
+        }
+
+        if (Objects.equals(sort, "4.5")) {
+            listProducts = productDAO.listRatedProducts(4.5);
+        }
+        if (Objects.equals(sort, "4.0")) {
+            listProducts = productDAO.listRatedProducts(4.0);
+        }
+        if (Objects.equals(sort, "3.5")) {
+            listProducts = productDAO.listRatedProducts(3.5);
+        }
+        if (Objects.equals(sort, "3.0")) {
+            listProducts = productDAO.listRatedProducts(3.0);
+        }
+        if (Objects.equals(sort, "price_desc")) {
+            listProducts = productDAO.listByPriceDesc();
+        }
+        if (Objects.equals(sort, "price_asc")) {
+            listProducts = productDAO.listByPrice();
+        }
+        if (Objects.equals(sort, "newest")) {
+            listProducts = productDAO.listNewProducts();
+        }
+        if (Objects.equals(sort, "best_selling")) {
+            listProducts = productDAO.listBestSellingProducts();
+        }
+        if (Objects.equals(sort, "most_favored")) {
+            listProducts = productDAO.listMostFavoredProducts();
+        }
+
+        int numberOfPages = listProducts.size();
+        int numberOfProducts = 9;
+
+        if (numberOfPages % numberOfProducts != 0) {
+            numberOfPages = numberOfPages / numberOfProducts + 1;
+        } else {
+            numberOfPages = numberOfPages / numberOfProducts;
+        }
+
+        int numEnd = Integer.parseInt(pageId) * numberOfProducts - 1;
+        int numBegin = numEnd - numberOfProducts + 1;
+
+        int rating4_5 = productDAO.listRatedProducts(4.5).size();
+        int rating4 = productDAO.listRatedProducts(4.0).size();
+        int rating3_5 = productDAO.listRatedProducts(3.5).size();
+        int rating3 = productDAO.listRatedProducts(3.0).size();
+
+        request.setAttribute("rating4_5", rating4_5);
+        request.setAttribute("rating4", rating4);
+        request.setAttribute("rating3_5", rating3_5);
+        request.setAttribute("rating3", rating3);
+
+        request.setAttribute("listProducts", listProducts);
+        request.setAttribute("listCategories", listCategories);
+
+        request.setAttribute("sort", sort);
+
+        request.setAttribute("pageId", pageId);
+        request.setAttribute("numberOfPages", numberOfPages);
+        request.setAttribute("numBegin", numBegin);
+        request.setAttribute("numEnd", numEnd);
+
+        forwardToPage("shop/product_list.jsp", request, response);
+    }
+
     public void listProductByCategory() throws ServletException, IOException {
         int categoryId = Integer.parseInt(request.getParameter("id"));
         Category category = categoryDAO.get(categoryId);
@@ -208,26 +282,25 @@ public class ProductService {
         }
 
         if (Objects.equals(rating, "4.5")) {
-            listProducts = productDAO.listRatingProducts(categoryId, 4.5);
-            request.setAttribute("4.5rating", listProducts);
+            listProducts = productDAO.listRatedProducts(categoryId, 4.5);
         }
         if (Objects.equals(rating, "4.0")) {
-            listProducts = productDAO.listRatingProducts(categoryId, 4.0);
+            listProducts = productDAO.listRatedProducts(categoryId, 4.0);
         }
         if (Objects.equals(rating, "3.5")) {
-            listProducts = productDAO.listRatingProducts(categoryId, 3.5);
+            listProducts = productDAO.listRatedProducts(categoryId, 3.5);
         }
         if (Objects.equals(rating, "3.0")) {
-            listProducts = productDAO.listRatingProducts(categoryId, 3.0);
+            listProducts = productDAO.listRatedProducts(categoryId, 3.0);
         }
         if (Objects.equals(sort, "price_desc")) {
-            listProducts = productDAO.sortByPriceDesc(categoryId);
+            listProducts = productDAO.listByPriceDesc(categoryId);
         }
         if (Objects.equals(sort, "price_asc")) {
-            listProducts = productDAO.sortByPriceAsc(categoryId);
+            listProducts = productDAO.listByPrice(categoryId);
         }
         if (Objects.equals(sort, "newest")) {
-            listProducts = productDAO.lisNewProducts(categoryId);
+            listProducts = productDAO.listNewProducts(categoryId);
         }
         if (Objects.equals(sort, "best_selling")) {
             listProducts = productDAO.listBestSellingProducts(categoryId);
@@ -239,7 +312,7 @@ public class ProductService {
         List<Category> listCategories = categoryDAO.listAll();
 
         int numberOfPages = listProducts.size();
-        int numberOfProducts = 10;
+        int numberOfProducts = 9;
 
         if (numberOfPages % numberOfProducts != 0) {
             numberOfPages = numberOfPages / numberOfProducts + 1;
@@ -250,10 +323,10 @@ public class ProductService {
         int numEnd = Integer.parseInt(pageId) * numberOfProducts - 1;
         int numBegin = numEnd - numberOfProducts + 1;
 
-        int rating4_5 = productDAO.listRatingProducts(categoryId, 4.5).size();
-        int rating4 = productDAO.listRatingProducts(categoryId, 4.0).size();
-        int rating3_5 = productDAO.listRatingProducts(categoryId, 3.5).size();
-        int rating3 = productDAO.listRatingProducts(categoryId, 3.0).size();
+        int rating4_5 = productDAO.listRatedProducts(categoryId, 4.5).size();
+        int rating4 = productDAO.listRatedProducts(categoryId, 4.0).size();
+        int rating3_5 = productDAO.listRatedProducts(categoryId, 3.5).size();
+        int rating3 = productDAO.listRatedProducts(categoryId, 3.0).size();
 
         request.setAttribute("rating4_5", rating4_5);
         request.setAttribute("rating4", rating4);

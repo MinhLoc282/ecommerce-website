@@ -16,12 +16,13 @@
                     id="navbar-1">
                 <ul class="navbar-nav mt-2 mt-md-0">
                     <li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/">Home
-                        <span class="sr-only">(current)</span>
+                    </a></li>
+                    <li class="nav-item active"><a class="nav-link" href="view_all">Shop
                     </a></li>
                     <li class="nav-item dropdown mega-menu"><a
                             class="nav-link dropdown-toggle" href="#"
                             role="button" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">Shop </a>
+                            aria-expanded="false">Category</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <div class="container">
                                 <div class="divider"></div>

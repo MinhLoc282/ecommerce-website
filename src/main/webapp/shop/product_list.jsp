@@ -1,17 +1,13 @@
-<%@ page contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-
     <%@ include file="common.jsp" %>
 
     <link rel="stylesheet" href="shop/css/style.css">
 
-    <title>Products in ${category.name}</title>
+    <title>All Products</title>
 </head>
 <body>
 <%@ include file="header.jsp" %>
@@ -37,7 +33,7 @@
             <p class="text-uppercase">Rating</p>
 
             <div class="filter-checkbox">
-                <a href="view_category?id=${category.categoryId}&sort=${'4.5'}" style="color: #444342">
+                <a href="view_all?sort=${'4.5'}" style="color: #444342">
                     <c:forTokens items="${'on,on,on,on,half'}" delims="," var="star">
                         <%@ include file="rating_stars.jsp" %>
                     </c:forTokens>
@@ -45,7 +41,7 @@
                 </a>
             </div>
             <div class="filter-checkbox">
-                <a href="view_category?id=${category.categoryId}&sort=${'4.0'}" style="color: #444342">
+                <a href="view_all?sort=${'4.0'}" style="color: #444342">
                     <c:forTokens items="${'on,on,on,on,off'}" delims="," var="star">
                         <%@ include file="rating_stars.jsp" %>
                     </c:forTokens>
@@ -53,7 +49,7 @@
                 </a>
             </div>
             <div class="filter-checkbox">
-                <a href="view_category?id=${category.categoryId}&sort=${'3.5'}" style="color: #444342">
+                <a href="view_all?sort=${'3.5'}" style="color: #444342">
                     <c:forTokens items="${'on,on,on,half,off'}" delims="," var="star">
                         <%@ include file="rating_stars.jsp" %>
                     </c:forTokens>
@@ -61,7 +57,7 @@
                 </a>
             </div>
             <div class="filter-checkbox">
-                <a href="view_category?id=${category.categoryId}&sort=${'3.0'}" style="color: #444342">
+                <a href="view_all?sort=${'3.0'}" style="color: #444342">
                     <c:forTokens items="${'on,on,on,off,off'}" delims="," var="star">
                         <%@ include file="rating_stars.jsp" %>
                     </c:forTokens>
@@ -83,18 +79,18 @@
                                     class="caret"></span></a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item"
-                                       href="view_category?id=${category.categoryId}&sort=${'price_desc'}">Price
+                                       href="view_all?sort=${'price_desc'}">Price
                                         Descending</a>
                                     <a class="dropdown-item"
-                                       href="view_category?id=${category.categoryId}&sort=${'price_asc'}">Price
+                                       href="view_all?sort=${'price'}">Price
                                         Ascending</a>
                                     <a class="dropdown-item"
-                                       href="view_category?id=${category.categoryId}&sort=${'newest'}">Newest</a>
+                                       href="view_all?sort=${'newest'}">Newest</a>
                                     <a class="dropdown-item"
-                                       href="view_category?id=${category.categoryId}&sort=${'best_selling'}">Best
+                                       href="view_all?sort=${'best_selling'}">Best
                                         Selling</a>
                                     <a class="dropdown-item"
-                                       href="view_category?id=${category.categoryId}&sort=${'most_favored'}">Most
+                                       href="view_all?sort=${'most_favored'}">Most
                                         Favored</a>
                                 </div>
                             </div>
@@ -102,16 +98,16 @@
                             <div class="btn-group float-right ml-3">
                                 <c:if test="${pageId != '1'}">
                                     <a style="color: #444342"
-                                       href="view_category?id=${category.categoryId}&sort=${sort}&page=${pageId - 1}"><span
+                                       href="view_all?sort=${sort}&page=${pageId - 1}"><span
                                             class="fa fa-arrow-left fa-lg"></span></a>
                                 </c:if>
                                 <c:forEach begin="1" end="${numberOfPages}" var="i">
                                     <a id="${i}" style="color: #444342"
-                                       href="view_category?id=${category.categoryId}&sort=${sort}&page=${i}">&nbsp${i}&nbsp</a>
+                                       href="view_all?sort=${sort}&page=${i}">&nbsp${i}&nbsp</a>
                                 </c:forEach>
                                 <c:if test="${pageId != numberOfPages}">
                                     <a style="color: #444342"
-                                       href="view_category?id=${category.categoryId}&sort=${sort}&page=${pageId + 1}"><span
+                                       href="view_all?sort=${sort}&page=${pageId + 1}"><span
                                             class="fa fa-arrow-right fa-lg"></span></a>
                                 </c:if>
                             </div>
