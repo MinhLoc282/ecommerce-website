@@ -220,8 +220,9 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <button type="sumit" class="btn btn-success">Save</button>
-                                        <button type="cancel" class="btn btn-success">Cancel</button>
+                                        <button type="submit" class="btn btn-success">Save</button>
+                                        <button type="button" onclick="history.go(-1);" class="btn btn-success">Cancel
+                                        </button>
                                     </div>
                                 </div>
                             </form>

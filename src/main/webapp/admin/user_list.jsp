@@ -87,12 +87,8 @@
                                         <td>${user.email}</td>
                                         <td>${user.fullName}</td>
                                         <td>
-                                            <a href="edit_user?id=${user.userId}">
-                                                Edit
-                                            </a> &nbsp;
-                                            <a href="javascript:void(0);" class="deleteLink" id="${user.userId}">
-                                                Delete
-                                            </a>
+                                            <a class="btn waves-effect waves-light btn btn-info hidden-sm-down text-white" href="edit_user?id=${user.userId}">Edit</a> &nbsp;
+                                            <button class="btn waves-effect waves-light btn btn-info hidden-sm-down text-white" type="button" onclick="detele_user(${user.userId})">Delete</button>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -148,17 +144,13 @@
         $('#table_id').DataTable();
     });
 </script>
-</body>
 <script>
-    $(document).ready(function () {
-        $(".deleteLink").each(function () {
-            $(this).on("click", function () {
-                let userId = $(this).attr("id");
-                if (confirm('Are you sure you want to delete the user with ID ' + userId + '?')) {
-                    window.location = 'delete_user?id=' + userId;
-                }
-            });
-        });
-    });
+    function detele_user(id){
+        let userId = id;
+        if (confirm('Are you sure you want to delete the user with ID ' + userId + '?')) {
+            window.location = 'delete_user?id=' + userId;
+        }
+    }
 </script>
+</body>
 </html>

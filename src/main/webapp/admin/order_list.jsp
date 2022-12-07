@@ -91,9 +91,9 @@
                                         <td>${order.status}</td>
                                         <td>${order.orderDate}</td>
                                         <td>
-                                            <a href="view_order?id=${order.orderId}">View</a> &nbsp;
-                                            <a href="edit_order?id=${order.orderId}">Edit</a> &nbsp;
-                                            <a href="javascript:void(0);" class="deleteLink" id="${order.orderId}">Delete</a>
+                                            <a class="btn waves-effect waves-light btn btn-info hidden-sm-down text-white" href="view_order?id=${order.orderId}">View</a> &nbsp;
+                                            <a class="btn waves-effect waves-light btn btn-info hidden-sm-down text-white" href="edit_order?id=${order.orderId}">Edit</a> &nbsp;
+                                            <button class="btn waves-effect waves-light btn btn-info hidden-sm-down text-white" type="button" onclick="delete_order(${order.orderId})">Delete</button>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -149,17 +149,13 @@
         $('#table_id').DataTable();
     });
 </script>
-</body>
 <script>
-    $(document).ready(function () {
-        $(".deleteLink").each(function () {
-            $(this).on("click", function () {
-                let orderId = $(this).attr("id");
-                if (confirm('Are you sure you want to delete the order with ID ' + orderId + '?')) {
-                    window.location = 'delete_order?id=' + orderId;
-                }
-            });
-        });
-    });
+    function delete_order(id) {
+        let orderId = id;
+        if (confirm('Are you sure you want to delete the order with ID ' + orderId + '?')) {
+            window.location = 'delete_order?id=' + orderId;
+        }
+    }
 </script>
+</body>
 </html>

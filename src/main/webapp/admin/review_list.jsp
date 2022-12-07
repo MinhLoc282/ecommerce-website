@@ -90,12 +90,8 @@
                                         <td>${review.customer.fullName}</td>
                                         <td>${review.reviewTime}</td>
                                         <td>
-                                            <a href="edit_review?id=${review.reviewId}">
-                                                Edit
-                                            </a> &nbsp;
-                                            <a href="javascript:void(0);" class="deleteLink" id="${review.reviewId}">
-                                                Delete
-                                            </a>
+                                            <a class="btn waves-effect waves-light btn btn-info hidden-sm-down text-white" href="edit_review?id=${review.reviewId}">Edit</a> &nbsp;
+                                            <button class="btn waves-effect waves-light btn btn-info hidden-sm-down text-white" type="button" onclick="detele_reivew(${review.reviewId})">Delete</button>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -152,17 +148,13 @@
         $('#table_id').DataTable();
     });
 </script>
-</body>
 <script>
-    $(document).ready(function () {
-        $(".deleteLink").each(function () {
-            $(this).on("click", function () {
-                let reviewId = $(this).attr("id");
-                if (confirm('Are you sure you want to delete the review with ID ' + reviewId + '?')) {
-                    window.location = 'delete_review?id=' + reviewId;
-                }
-            });
-        });
-    });
+    function delete_review(id) {
+        let reviewId = id;
+        if (confirm('Are you sure you want to delete the review with ID ' + reviewId + '?')) {
+            window.location = 'delete_review?id=' + reviewId;
+        }
+    }
 </script>
+</body>
 </html>

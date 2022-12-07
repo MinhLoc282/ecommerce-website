@@ -3,18 +3,18 @@
              xmlns="https://jakarta.ee/xml/ns/persistence"
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
              version="3.0">
-    <persistence-unit name="ecommerce-website">
+    <persistence-unit name="ecommerce-store">
         <properties>
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
-            <!--<property name="hibernate.connection.url"
+            <property name="hibernate.connection.url"
                       value="jdbc:mysql://localhost:3306/ecommercedb?autoReconnect=true"/>
             <property name="hibernate.connection.username" value="root"/>
-            <property name="hibernate.connection.password" value="0000"/>-->
+            <property name="hibernate.connection.password" value="0000"/>
 
-            <property name="hibernate.connection.url"
+            <!--<property name="hibernate.connection.url"
                       value="jdbc:mysql://bed7325b70ab3e:35d2f06b@eu-cdbr-west-03.cleardb.net/heroku_b95c559dec7bbb8?reconnect=true"/>
             <property name="hibernate.connection.username" value="bed7325b70ab3e"/>
-            <property name="hibernate.connection.password" value="35d2f06b"/>
+            <property name="hibernate.connection.password" value="35d2f06b"/>-->
 
             <!--<property name="hibernate.show_sql" value="true"/>-->
             <!--<property name="hibernate.format_sql" value="true"/>-->

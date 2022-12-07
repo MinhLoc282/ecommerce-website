@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.ecommerce</groupId>
-    <artifactId>ecommerce-website</artifactId>
+    <artifactId>ecommerce-store</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>eCommerceWebsite</name>
     <packaging>war</packaging>

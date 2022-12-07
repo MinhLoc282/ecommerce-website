@@ -1,17 +1,17 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="eCommerceWebsite:war exploded">
-    <output-path>$PROJECT_DIR$/target/eCommerceWebsite-1.0-SNAPSHOT</output-path>
+  <artifact type="exploded-war" name="ecommerce-store:war exploded">
+    <output-path>$PROJECT_DIR$/target/ecommerce-store-1.0-SNAPSHOT</output-path>
     <properties id="maven-jee-properties">
       <options>
         <exploded>true</exploded>
-        <module>eCommerceWebsite</module>
+        <module>ecommerce-store</module>
         <packaging>war</packaging>
       </options>
     </properties>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="eCommerceWebsite" />
+          <element id="module-output" name="ecommerce-store" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: com.mysql:mysql-connector-j:8.0.31" />
@@ -45,9 +45,9 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/eCommerceWebsite-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/target/ecommerce-store-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="eCommerceWebsite/web/Web" />
+      <element id="javaee-facet-resources" facet="ecommerce-store/web/Web" />
     </root>
   </artifact>
 </component>

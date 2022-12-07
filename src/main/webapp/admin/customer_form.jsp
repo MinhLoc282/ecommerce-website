@@ -110,24 +110,8 @@
                                 <div class="form-group">
                                     <label class="col-md-12">Password</label>
                                     <div class="col-md-12">
-                                        <input class="form-control form-control-line" type="password"
-                                               name="checkPassword" size="45" value="${customer.password}"
-                                               required="required" maxlength="32"/>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-12">New Password</label>
-                                    <div class="col-md-12">
-                                        <input class="form-control form-control-line" type="password" name="password"
-                                               size="45" value="${customer.password}" required="required"
-                                               maxlength="32"/>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-12">Confirm Password</label>
-                                    <div class="col-md-12">
-                                        <input class="form-control form-control-line" type="password"
-                                               name="confirmPassword" size="45" value="${customer.password}"
+                                        <input class="form-control form-control-line" type="hidden"
+                                               name="checkPassword" size="45" value="password"
                                                required="required" maxlength="32"/>
                                     </div>
                                 </div>

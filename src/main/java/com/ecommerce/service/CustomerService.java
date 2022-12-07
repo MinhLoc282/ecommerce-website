@@ -126,27 +126,21 @@ public class CustomerService {
     public void updateCustomer() throws ServletException, IOException {
         Integer customerId = Integer.parseInt(request.getParameter("customerId"));
         String email = request.getParameter("email");
-        String checkPassword = request.getParameter("checkPassword");
 
-        Customer customerById = customerDAO.get(customerId);
         Customer customerByEmail = customerDAO.findByEmail(email);
-        Customer checkResult = customerDAO.findByEmailAndPassword(email, checkPassword);
 
         if (customerByEmail != null && !Objects.equals(customerByEmail.getCustomerId(), customerId)) {
             messageForAdmin(String.format(
                     "Could not update the customer ID %s because there is an existing customer having the same email.",
                     customerId), request, response);
+        } else {
+            Customer customerById = customerDAO.get(customerId);
 
-        } else if (checkResult != null) {
             updateCustomerFieldsFromForm(customerById);
 
             customerDAO.update(customerById);
 
             listCustomer("The customer has been updated successfully.");
-
-        } else {
-            messageForAdmin(String.format("Could not update the customer with ID %s because the password is wrong.",
-                    customerById), request, response);
         }
     }
 

@@ -73,17 +73,17 @@
                             <table class="table" id="table_id">
                                 <thead>
                                 <tr>
-                                    <th>Index</th>
-                                    <th>ID</th>
-                                    <th>Image</th>
-                                    <th>Title</th>
-                                    <th>Category</th>
-                                    <th>Price</th>
-                                    <th>Last Updated</th>
-                                    <th>Action</th>
+                                    <th style="width: 5%;">Index</th>
+                                    <th style="width: 5%;">ID</th>
+                                    <th style="width: 15%;">Image</th>
+                                    <th style="width: 15%;">Title</th>
+                                    <th style="width: 10%;">Category</th>
+                                    <th style="width: 10%;">Price</th>
+                                    <th style="width: 15%;">Last Updated</th>
+                                    <th style="width: 25%;">Action</th>
                                 </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="list" id="myTable">
                                 <c:forEach var="product" items="${listProducts}" varStatus="status">
                                     <tr>
                                         <td>${status.index + 1}</td>
@@ -97,8 +97,8 @@
                                             <fmt:formatDate pattern='MM/dd/yyyy' value='${product.lastUpdateTime}'/>
                                         </td>
                                         <td>
-                                            <a href="edit_product?id=${product.productId}">Edit</a> &nbsp;
-                                            <a href="javascript:void(0);" class="deleteLink" id="${product.productId}">Delete</a>
+                                            <a class="btn waves-effect waves-light btn btn-info hidden-sm-down text-white" href="edit_product?id=${product.productId}">Edit</a> &nbsp;
+                                            <button class="btn waves-effect waves-light btn btn-info hidden-sm-down text-white" type="button" onclick="delete_product(${product.productId})">Delete</button>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -153,17 +153,14 @@
         $('#table_id').DataTable();
     });
 </script>
-</body>
+
 <script>
-    $(document).ready(function () {
-        $(".deleteLink").each(function () {
-            $(this).on("click", function () {
-                let productId = $(this).attr("id");
-                if (confirm('Are you sure you want to delete the product with ID ' + productId + '?')) {
-                    window.location = 'delete_product?id=' + productId;
-                }
-            });
-        });
-    });
+    function delete_product(id){
+        let productId = id;
+        if (confirm('Are you sure you want to delete the product with ID ' + productId + '?')) {
+            window.location = 'delete_product?id=' + productId;
+        }
+    }
 </script>
+</body>
 </html>

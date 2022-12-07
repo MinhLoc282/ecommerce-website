@@ -86,13 +86,8 @@
                                         <td>${category.categoryId}</td>
                                         <td>${category.name}</td>
                                         <td>
-                                            <a href="edit_category?id=${category.categoryId}">
-                                                Edit
-                                            </a> &nbsp;
-                                            <a href="javascript:void(0);" class="deleteLink"
-                                               id="${category.categoryId}">
-                                                Delete
-                                            </a>
+                                            <a class="btn waves-effect waves-light btn btn-info hidden-sm-down text-white" href="edit_category?id=${category.categoryId}">Edit</a> &nbsp;
+                                            <button class="btn waves-effect waves-light btn btn-info hidden-sm-down text-white" type="button" onclick="delete_category(${category.categoryId})">Delete</button>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -148,17 +143,13 @@
         $('#table_id').DataTable();
     });
 </script>
-</body>
 <script>
-    $(document).ready(function () {
-        $(".deleteLink").each(function () {
-            $(this).on("click", function () {
-                let categoryId = $(this).attr("id");
-                if (confirm('Are you sure you want to delete the category with ID ' + categoryId + '?')) {
-                    window.location = 'delete_category?id=' + categoryId;
-                }
-            });
-        });
-    });
+    function delete_category(id) {
+        let categoryId = id;
+        if (confirm('Are you sure you want to delete the category with ID ' + categoryId + '?')) {
+            window.location = 'delete_category?id=' + categoryId;
+        }
+    }
 </script>
+</body>
 </html>

@@ -95,11 +95,9 @@
                                         <td>${customer.city}</td>
                                         <td>${customer.countryName}</td>
                                         <td>${customer.registerDate}</td>
-                                        <td><a href="edit_customer?id=${customer.customerId}">
-                                            Edit
-                                        </a> &nbsp; <a href="javascript:void(0);" class="deleteLink"
-                                                       id="${customer.customerId}"> Delete
-                                        </a></td>
+                                        <td>
+                                            <a class="btn waves-effect waves-light btn btn-info hidden-sm-down text-white" href="edit_customer?id=${customer.customerId}">Edit</a> &nbsp;
+                                            <button class="btn waves-effect waves-light btn btn-info hidden-sm-down text-white" type="button" onclick="delete_customer(${customer.customerId})">Delete</button>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
@@ -154,17 +152,13 @@
         $('#table_id').DataTable();
     });
 </script>
-</body>
 <script>
-    $(document).ready(function () {
-        $(".deleteLink").each(function () {
-            $(this).on("click", function () {
-                let customerId = $(this).attr("id");
-                if (confirm('Are you sure you want to delete the customer with ID ' + customerId + '?')) {
-                    window.location = 'delete_customer?id=' + customerId;
-                }
-            });
-        });
-    });
+    function delete_customer(id) {
+        let customerId = id;
+        if (confirm('Are you sure you want to delete the customer with ID ' + customerId + '?')) {
+            window.location = 'delete_customer?id=' + customerId;
+        }
+    }
 </script>
+</body>
 </html>
