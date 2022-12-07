@@ -96,20 +96,10 @@
                             </div>
 
                             <div class="btn-group float-right ml-3">
-                                <c:if test="${pageId != '1'}">
-                                    <a style="color: #444342"
-                                       href="view_all?sort=${sort}&page=${pageId - 1}"><span
-                                            class="fa fa-arrow-left fa-lg"></span></a>
-                                </c:if>
                                 <c:forEach begin="1" end="${numberOfPages}" var="i">
                                     <a id="${i}" style="color: #444342"
                                        href="view_all?sort=${sort}&page=${i}">&nbsp${i}&nbsp</a>
                                 </c:forEach>
-                                <c:if test="${pageId != numberOfPages}">
-                                    <a style="color: #444342"
-                                       href="view_all?sort=${sort}&page=${pageId + 1}"><span
-                                            class="fa fa-arrow-right fa-lg"></span></a>
-                                </c:if>
                             </div>
                         </div>
                     </div>
