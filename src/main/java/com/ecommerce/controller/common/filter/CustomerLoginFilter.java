@@ -11,7 +11,7 @@ import java.io.IOException;
 public class CustomerLoginFilter extends HttpFilter implements Filter {
 
     private static final String[] loginRequiredURLs = {"/view_profile", "/edit_profile", "/update_profile",
-            "/write_review", "/checkout", "/place_order", "/view_order", "/show_order_detail", "/review_payment"};
+            "/write_review", "/checkout", "/place_order", "/view_order", "/show_order_detail", "/review_payment", "/show_contact"};
 
     public void init(FilterConfig config) throws ServletException {
     }

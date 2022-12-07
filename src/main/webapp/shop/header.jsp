@@ -49,7 +49,7 @@
                         </div>
                     </li>
 
-                    <li class="nav-item"><a class="nav-link" href="">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="show_contact">Contact</a></li>
 
                     <li class="nav-item dropdown"><a
                             class="nav-link dropdown-toggle" href="#"

@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "ShowEmailNewFormServlet", value = "/admin/new_email")
-public class ShowEmailNewFormServlet extends HttpServlet {
+@WebServlet(name = "ShowEmailFormServlet", value = "/admin/new_email")
+public class ShowEmailFormServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

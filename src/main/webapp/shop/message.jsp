@@ -36,7 +36,8 @@
                         <figure>
                             <img src="shop/images/logo-store.jpg" alt="">
                         </figure>
-                        <a href="#" type="button" onclick="history.go(-1);">Go back</a>
+                        <a href="${pageContext.request.contextPath}/" type="button">Continue
+                            Shopping</a>
                     </div>
 
                 </div>

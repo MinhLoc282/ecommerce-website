@@ -276,7 +276,7 @@ public class ProductService {
         }
 
         if (category == null) {
-            messageForShop(String.format("Sorry. The category ID %s is not available.", categoryId), request,
+            messageForShop(String.format("Sorry. The category ID %s is not available.<br/><a href='#' type='button' onclick='history.go(-1);'>Click here</a> to go back.", categoryId), request,
                     response);
             return;
         }
@@ -363,7 +363,7 @@ public class ProductService {
             forwardToPage("shop/product_detail.jsp", request, response);
 
         } else {
-            messageForShop(String.format("Sorry. The product with ID %s is not available.", productId), request,
+            messageForShop(String.format("Sorry. The product with ID %s is not available.<br/><a href='#' type='button' onclick='history.go(-1);'>Click here</a> to go back.", productId), request,
                     response);
         }
     }

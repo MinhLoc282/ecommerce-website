@@ -29,7 +29,7 @@
     <div class="container">
         <h3 class="mb-4">New Products</h3>
         <div class="row">
-            <c:forEach items="${listNewProducts}" var="product">
+            <c:forEach items="${listNewProducts}" var="product" begin="0" end="3">
                 <div class="col-sm-6 col-md-3 col-product">
                     <figure>
                         <img class="rounded-corners img-fluid" src="data:image/jpg;base64,${product.base64Image}"
@@ -53,7 +53,7 @@
     <div class="container">
         <h3 class="mb-4">Best Selling Products</h3>
         <div class="row">
-            <c:forEach items="${listBestSellingProducts}" var="product">
+            <c:forEach items="${listBestSellingProducts}" var="product" begin="0" end="3">
                 <div class="col-sm-6 col-md-3 col-product">
                     <figure>
                         <img class="rounded-corners img-fluid" src="data:image/jpg;base64,${product.base64Image}"
@@ -77,7 +77,7 @@
     <div class="container">
         <h3 class="mb-4">Favored Products</h3>
         <div class="row">
-            <c:forEach items="${listFavoredProducts}" var="product">
+            <c:forEach items="${listFavoredProducts}" var="product" begin="0" end="3">
                 <div class="col-sm-6 col-md-3 col-product">
                     <figure>
                         <img class="rounded-corners img-fluid" src="data:image/jpg;base64,${product.base64Image}"

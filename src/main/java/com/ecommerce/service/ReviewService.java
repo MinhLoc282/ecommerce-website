@@ -96,6 +96,7 @@ public class ReviewService {
         if (existReview != null) {
             request.setAttribute("review", existReview);
             forwardToPage("shop/review_info.jsp", request, response);
+            
         } else {
             forwardToPage("shop/review_form.jsp", request, response);
         }
